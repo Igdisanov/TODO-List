@@ -5,7 +5,7 @@
 //  Created by Vadim Igdisanov on 24.10.2021.
 //
 
-import Foundation
+import RealmSwift
 
 struct Task {
     
