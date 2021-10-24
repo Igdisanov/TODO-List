@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "A1261C9E-269E-4C6E-9393-1D310A856F82"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF94F448-9932-407D-8B7B-2DD54868D415"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TODO list/ViewControllers/CreateTaskViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "CreateTaskViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "BF94F448-9932-407D-8B7B-2DD54868D415 - a18c4d5cbe14a7d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODO_list.CreateTaskViewController.descriptionTextView.getter : Swift.Optional&lt;__C.UITextView&gt;"
+                  moduleName = "TODO list"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vadimigdisanov/Documents/TODO%20list/TODO%20list/ViewControllers/CreateTaskViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "126">
+               </Location>
+               <Location
+                  uuid = "BF94F448-9932-407D-8B7B-2DD54868D415 - d7e92585cf0e6fdb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODO_list.CreateTaskViewController.descriptionTextView.setter : Swift.Optional&lt;__C.UITextView&gt;"
+                  moduleName = "TODO list"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vadimigdisanov/Documents/TODO%20list/TODO%20list/ViewControllers/CreateTaskViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "BF94F448-9932-407D-8B7B-2DD54868D415 - fcdc6a45c9c607da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODO_list.CreateTaskViewController.descriptionTextView.modify : Swift.Optional&lt;__C.UITextView&gt;"
+                  moduleName = "TODO list"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vadimigdisanov/Documents/TODO%20list/TODO%20list/ViewControllers/CreateTaskViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "BF94F448-9932-407D-8B7B-2DD54868D415 - e83f57232ddbf1e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODO_list.CreateTaskViewController.descriptionTextView.modify : Swift.Optional&lt;__C.UITextView&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "TODO list"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vadimigdisanov/Documents/TODO%20list/TODO%20list/ViewControllers/CreateTaskViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  uuid = "BF94F448-9932-407D-8B7B-2DD54868D415 - 5f69375ce0d767b9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODO_list.CreateTaskViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; TODO_list.CreateTaskViewController"
+                  moduleName = "TODO list"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vadimigdisanov/Documents/TODO%20list/TODO%20list/ViewControllers/CreateTaskViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "300">
+               </Location>
+               <Location
+                  uuid = "BF94F448-9932-407D-8B7B-2DD54868D415 - 6ae74c7c62b93ea6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TODO_list.CreateTaskViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;TODO_list.CreateTaskViewController&gt;"
+                  moduleName = "TODO list"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vadimigdisanov/Documents/TODO%20list/TODO%20list/ViewControllers/CreateTaskViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "241">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

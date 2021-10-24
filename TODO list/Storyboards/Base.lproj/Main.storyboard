@@ -30,7 +30,7 @@
         <!--Новые задачи-->
         <scene sceneID="Kql-dn-2uw">
             <objects>
-                <tableViewController id="FQg-MV-8NI" customClass="NewTaskTableViewController" customModule="TODO_List" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="FQg-MV-8NI" customClass="NewTaskTableViewController" customModule="TODO_list" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ICl-TT-uGv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +87,7 @@
         <!--Создать задачу-->
         <scene sceneID="LaU-Ri-Ngx">
             <objects>
-                <viewController id="j3e-Nd-TYK" customClass="CreateTaskViewController" customModule="TODO_List" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="j3e-Nd-TYK" customClass="CreateTaskViewController" customModule="TODO_list" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W14-lv-Pkr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,7 +163,7 @@
         <!--Выполненные задачи-->
         <scene sceneID="4el-4L-8Yo">
             <objects>
-                <tableViewController id="pzY-VG-ZXC" customClass="CompletedTaskTableViewController" customModule="TODO_List" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="pzY-VG-ZXC" customClass="CompletedTaskTableViewController" customModule="TODO_list" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="I8t-Bf-Bdj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
