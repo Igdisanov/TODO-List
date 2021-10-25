@@ -7,19 +7,33 @@
 
 import UIKit
 
-class CreateTaskViewController: UIViewController {
+protocol TaskProtocol {
+    var task: Task { get }
+}
+
+class CreateTaskViewController: UIViewController, TaskProtocol {
     
-    var taskList: Task!
+    var delegate: CreateTaskViewControllerDelegate!
+    
+    
+    var task: Task {
+        let task  = Task(
+            name: nameTaskTextField.text ?? "",
+            descriptionTask: descriptionTextView.text ?? "",
+            isComplete: false)
+        
+        return task
+    }
     
     
     @IBOutlet var nameTaskTextField: UITextField!
     @IBOutlet var descriptionTextView: UITextView!
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         descriptionTextView.text = ""
         descriptionTextView.backgroundColor = .lightGray
         descriptionTextView.layer.cornerRadius = 10
@@ -27,9 +41,14 @@ class CreateTaskViewController: UIViewController {
         
     }
     
-
-    @IBAction func addTaskImageViewButtonPressed(_ sender: Any) {
+    
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        delegate.saveFalseTask(task)
+        print("ok")
+        dismiss(animated: true)
+        
     }
     
-
+    
+    
 }
