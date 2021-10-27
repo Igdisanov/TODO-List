@@ -7,13 +7,14 @@
 
 import UIKit
 
-protocol TaskProtocol {
-    var task: Task { get }
-}
 
-class CreateTaskViewController: UIViewController, TaskProtocol {
+class CreateTaskViewController: UIViewController {
     
-    var delegate: CreateTaskViewControllerDelegate!
+
+    var taskList: TaskList!
+    
+    @IBOutlet var nameTaskTextField: UITextField!
+    @IBOutlet var descriptionTextView: UITextView!
     
     
     var task: Task {
@@ -21,34 +22,22 @@ class CreateTaskViewController: UIViewController, TaskProtocol {
             name: nameTaskTextField.text ?? "",
             descriptionTask: descriptionTextView.text ?? "",
             isComplete: false)
-        
+
         return task
     }
-    
-    
-    @IBOutlet var nameTaskTextField: UITextField!
-    @IBOutlet var descriptionTextView: UITextView!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         descriptionTextView.text = ""
         descriptionTextView.backgroundColor = .lightGray
         descriptionTextView.layer.cornerRadius = 10
-        
-        
     }
     
-    
-    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-        delegate.saveFalseTask(task)
-        print("ok")
-        dismiss(animated: true)
-        
-    }
-    
+   
     
     
 }

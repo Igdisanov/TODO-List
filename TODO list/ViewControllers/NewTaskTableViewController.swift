@@ -7,18 +7,19 @@
 
 import UIKit
 
-protocol CreateTaskViewControllerDelegate {
-    func saveFalseTask (_ task: Task)
-}
-
 
 class NewTaskTableViewController: UITableViewController  {
     
+    // MARK: Properties
+    
+    var taskListC: TaskList!
     
     var falseTaskList: [Task] = []
     var trueTaskList: [Task] = []
     
     
+    
+    // MARK: Override funcs
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +28,21 @@ class NewTaskTableViewController: UITableViewController  {
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
     }
+ 
     
-    
+    // MARK: TableView add
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        falseTaskList.count
+        let taskList = taskListC.falseTaskList
+        
+        return taskList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let task = falseTaskList[indexPath.row]
+        let taskList = taskListC.falseTaskList
+
+        let task = taskList[indexPath.row]
         cell.textLabel?.text = task.name
         
         cell.detailTextLabel?.text = "\(Date.init())"
@@ -46,13 +52,7 @@ class NewTaskTableViewController: UITableViewController  {
     
     
     
-    @IBAction func addTaskUIBB(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "addSegue", sender: nil)
-        print("go")
-        
-    }
-    
-
+    // MARK: TableView cell
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
@@ -61,7 +61,7 @@ class NewTaskTableViewController: UITableViewController  {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            falseTaskList.remove(at: indexPath.row)
+            taskListC.falseTaskList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -72,15 +72,11 @@ class NewTaskTableViewController: UITableViewController  {
         return UISwipeActionsConfiguration(actions: [done])
     }
     
-//    func comletedTask() {
-//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        guard let secondStoryBoard = storyBoard.instantiateViewController(identifier: "CompletedTaskTableViewController") as? CompletedTaskTableViewController else {return}
-//        secondStoryBoard.trueTaskList = self.trueTaskList
-//       show(secondStoryBoard, sender: nil)
-//    }
+    let dictionary = ["task": TaskList()]
     
     func doneAction(indexPath: IndexPath) -> UIContextualAction {
-        var tL = falseTaskList[indexPath.row]
+        
+        var tL = taskListC.falseTaskList[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Ok") { [self] (action, view, completion) in
             
             
@@ -88,15 +84,13 @@ class NewTaskTableViewController: UITableViewController  {
             if tL.isComplete == false {
                 self.falseTaskList[indexPath.row] = tL
             } else {
-                self.falseTaskList.remove(at: indexPath.row)
-                self.trueTaskList.append(tL)
+                
+                self.taskListC.falseTaskList.remove(at: indexPath.row)
+//                self.taskListC.trueTaskList.append(tL)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
-//                comletedTask()
-                print("действие")
-                print("\(self.falseTaskList.count)")
-                print("\(self.trueTaskList.count)")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notoficationFromFirstViewController"), object: nil, userInfo: ["task": tL])
             }
-           
+            
             completion(true)
         }
         action.backgroundColor = .green
@@ -104,38 +98,41 @@ class NewTaskTableViewController: UITableViewController  {
         return action
     }
     
+    // MARK: IBActions
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let creatVC = segue.destination as! CreateTaskViewController
-        creatVC.delegate = self
+    @IBAction func addTaskUIBB(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "addSegue", sender: nil)
+        print("go")
+        
     }
     
+    // MARK: Navigaton
     
+        @IBAction func unwind (segue: UIStoryboardSegue) {
     
-}
-
-
-
-
-
-extension NewTaskTableViewController: CreateTaskViewControllerDelegate  {
-    func saveFalseTask(_ task: Task) {
-        if task.isComplete == false {
-            let newIndexPath = IndexPath(row: falseTaskList.count, section: 0)
-            falseTaskList.append(task)
+            guard let creatTaskVC = segue.source as? CreateTaskViewController else {return}
+            let task = creatTaskVC.task
+            let newIndexPath = IndexPath(row: taskListC.falseTaskList.count, section: 0)
+            taskListC.falseTaskList.append(task)
             tableView.insertRows(at: [newIndexPath], with: .fade)
-            print(task.name ?? "arror")
-            print(falseTaskList.count)
-            print(trueTaskList.count)
-        } else {
-            trueTaskList.append(task)
+
+           }
+    //
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            guard let creatVC = segue.destination as? CreateTaskViewController else { return }
+            guard let comletedVC = self.tabBarController?.viewControllers?.last as? CompletedTaskTableViewController else {return}
+            let newIndexPath = IndexPath(row: comletedVC.trueTaskList.falseTaskList.count, section: 0)
+            comletedVC.trueTaskList = taskListC
+            comletedVC.tableView.insertRows(at: [newIndexPath], with: .fade)
+            creatVC.taskList = taskListC
+           
         }
-    }
-    
-    
     
     
     
     
 }
+
+
+
 

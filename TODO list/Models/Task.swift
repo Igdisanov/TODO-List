@@ -16,3 +16,14 @@ struct Task {
     
 }
 
+
+class TaskList {
+    
+    var falseTaskList: [Task] = [
+        Task(name: "купить лося", isComplete: false)
+    ]
+    
+    var trueTaskList: [Task] = []
+    
+}
+
