@@ -12,8 +12,8 @@ class NewTaskTableViewController: UITableViewController  {
     
     // MARK: Properties
     
-    var taskListC: TaskList!
-    let dictionary = ["task": TaskList()]
+    var taskList: TaskList!
+    let dictionaryFalse = ["task": TaskList()]
     
     var formater: String {
         get {
@@ -31,18 +31,29 @@ class NewTaskTableViewController: UITableViewController  {
         
         tableView.rowHeight = 80
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(gtNotification), name: NSNotification.Name(rawValue: "notoficationFromLastViewController"), object: nil)
      
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            tableView.reloadData()
+        }
     // MARK: Notification
     
-  
+    @objc func gtNotification(notification: Notification) {
+        guard let userInfo = notification.userInfo else {return}
+        guard let taskList = userInfo["task"] as? Task else {return}
+        self.taskList.falseTaskList.append(taskList)
+    }
     
  
     
     // MARK: TableView add
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let taskList = taskListC.falseTaskList
+        let taskList = taskList.falseTaskList
         
         return taskList.count
     }
@@ -51,7 +62,7 @@ class NewTaskTableViewController: UITableViewController  {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let taskList = taskListC.falseTaskList
+        let taskList = taskList.falseTaskList
 
         let task = taskList[indexPath.row]
         cell.textLabel?.text = task.name
@@ -72,7 +83,7 @@ class NewTaskTableViewController: UITableViewController  {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            taskListC.falseTaskList.remove(at: indexPath.row)
+            taskList.falseTaskList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -86,13 +97,13 @@ class NewTaskTableViewController: UITableViewController  {
     
     func doneAction(indexPath: IndexPath) -> UIContextualAction {
         
-        var tL = taskListC.falseTaskList[indexPath.row]
+        var tL = taskList.falseTaskList[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Ok") { [self] (action, view, completion) in
             
             
             tL.isComplete = !tL.isComplete!
             if tL.isComplete != false {
-                self.taskListC.falseTaskList.remove(at: indexPath.row)
+                self.taskList.falseTaskList.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notoficationFromFirstViewController"), object: nil, userInfo: ["task": tL])
             }
@@ -118,8 +129,8 @@ class NewTaskTableViewController: UITableViewController  {
     
             guard let creatTaskVC = segue.source as? CreateTaskViewController else {return}
             let task = creatTaskVC.task
-            let newIndexPath = IndexPath(row: taskListC.falseTaskList.count, section: 0)
-            taskListC.falseTaskList.append(task)
+            let newIndexPath = IndexPath(row: taskList.falseTaskList.count, section: 0)
+            taskList.falseTaskList.append(task)
             tableView.insertRows(at: [newIndexPath], with: .fade)
 
            }
@@ -127,10 +138,10 @@ class NewTaskTableViewController: UITableViewController  {
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             guard let creatVC = segue.destination as? CreateTaskViewController else { return }
             guard let comletedVC = self.tabBarController?.viewControllers?.last as? CompletedTaskTableViewController else {return}
-            let newIndexPath = IndexPath(row: comletedVC.trueTaskList.falseTaskList.count, section: 0)
-            comletedVC.trueTaskList = taskListC
+            let newIndexPath = IndexPath(row: comletedVC.taskList.falseTaskList.count, section: 0)
+            comletedVC.taskList = taskList
             comletedVC.tableView.insertRows(at: [newIndexPath], with: .fade)
-            creatVC.taskList = taskListC
+            creatVC.taskList = taskList
            
         }
     

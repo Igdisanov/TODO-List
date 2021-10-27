@@ -20,8 +20,8 @@ class StartViewController: UIViewController {
         guard let newTaskVC = navigationFirstVC.topViewController as? NewTaskTableViewController else {return}
         guard let completedVC = navigationSecondVC.topViewController as? CompletedTaskTableViewController else {return}
 
-        newTaskVC.taskListC = TaskList()
-        completedVC.trueTaskList = TaskList()
+        newTaskVC.taskList = TaskList()
+        completedVC.taskList = TaskList()
         completedVC.tableView.reloadData()
     }
     

@@ -13,7 +13,8 @@ class CompletedTaskTableViewController: UITableViewController {
     
     // MARK: Properties
     
-    var trueTaskList: TaskList!
+    var taskList: TaskList!
+    let dictionaryTrue = ["task": TaskList()]
     
     var formater: String {
         get {
@@ -50,21 +51,21 @@ class CompletedTaskTableViewController: UITableViewController {
     @objc func gotNotification(notification: Notification) {
         guard let userInfo = notification.userInfo else {return}
         guard let taskList = userInfo["task"] as? Task else {return}
-        trueTaskList.trueTaskList.append(taskList)
+        self.taskList.trueTaskList.append(taskList)
     }
     
     
     // MARK: TableView
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let taskList = trueTaskList.trueTaskList
+        let taskList = taskList.trueTaskList
         return taskList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CompletedSell", for: indexPath)
-        let taskList = trueTaskList.trueTaskList
+        let taskList = taskList.trueTaskList
 
         let task = taskList[indexPath.row]
         cell.textLabel?.text = task.name
@@ -82,7 +83,7 @@ class CompletedTaskTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            trueTaskList.trueTaskList.remove(at: indexPath.row)
+            taskList.trueTaskList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -96,15 +97,15 @@ class CompletedTaskTableViewController: UITableViewController {
     
     func doneAction(indexPath: IndexPath) -> UIContextualAction {
         
-        var tL = trueTaskList.trueTaskList[indexPath.row]
+        var tL = taskList.trueTaskList[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Ok") { [self] (action, view, completion) in
             
             
             tL.isComplete = !tL.isComplete!
             if tL.isComplete == false {
-                self.trueTaskList.trueTaskList.remove(at: indexPath.row)
+                self.taskList.trueTaskList.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notoficationFromLastViewController"), object: nil, userInfo: ["task": tL])
                
             }
             
