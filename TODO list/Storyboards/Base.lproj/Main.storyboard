@@ -16,20 +16,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODO List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veU-tb-bTq">
+                                <rect key="frame" x="94.5" y="90" width="186" height="64"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="40"/>
+                                <color key="textColor" systemColor="systemYellowColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UBQ-zc-wJG">
+                                <rect key="frame" x="32" y="229" width="311" height="76"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="пока ничего вводить не надо" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BpX-3y-ogE">
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Нажмите Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ior-ng-w4l">
+                                        <rect key="frame" x="0.0" y="42" width="311" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="JcJ-cU-71w"/>
+                                </constraints>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7B-lu-ny2">
-                                <rect key="frame" x="139" y="307" width="97" height="53"/>
+                                <rect key="frame" x="147" y="335" width="81" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="startButtonPrassed" destination="Gh0-wc-1op" eventType="touchUpInside" id="EKI-Kk-PfE"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gIs-x9-YPZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="M7B-lu-ny2" firstAttribute="centerY" secondItem="Fdx-WW-k3a" secondAttribute="centerY" id="Ta3-Fu-Stp"/>
-                            <constraint firstItem="M7B-lu-ny2" firstAttribute="centerX" secondItem="Fdx-WW-k3a" secondAttribute="centerX" id="WIk-lQ-xV3"/>
+                            <constraint firstItem="M7B-lu-ny2" firstAttribute="centerX" secondItem="Fdx-WW-k3a" secondAttribute="centerX" id="0A2-La-3Kn"/>
+                            <constraint firstItem="gIs-x9-YPZ" firstAttribute="trailing" secondItem="UBQ-zc-wJG" secondAttribute="trailing" constant="32" id="1KR-HQ-KS2"/>
+                            <constraint firstItem="M7B-lu-ny2" firstAttribute="top" secondItem="UBQ-zc-wJG" secondAttribute="bottom" constant="30" id="1w2-Bf-iyt"/>
+                            <constraint firstItem="UBQ-zc-wJG" firstAttribute="top" secondItem="veU-tb-bTq" secondAttribute="bottom" constant="75" id="2hx-c9-FsP"/>
+                            <constraint firstItem="veU-tb-bTq" firstAttribute="top" secondItem="gIs-x9-YPZ" secondAttribute="top" constant="90" id="bgu-YY-9aS"/>
+                            <constraint firstItem="UBQ-zc-wJG" firstAttribute="leading" secondItem="gIs-x9-YPZ" secondAttribute="leading" constant="32" id="s7D-mC-BgU"/>
+                            <constraint firstItem="veU-tb-bTq" firstAttribute="centerX" secondItem="Fdx-WW-k3a" secondAttribute="centerX" id="ss2-e7-dmq"/>
                         </constraints>
                     </view>
                     <connections>
@@ -108,7 +137,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="j3e-Nd-TYK" kind="presentation" identifier="addSegue" modalPresentationStyle="fullScreen" id="shq-HC-a5k"/>
+                        <segue destination="j3e-Nd-TYK" kind="show" identifier="addSegue" id="shq-HC-a5k"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lMn-p3-f6t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -123,32 +152,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcm-cb-N6D">
-                                <rect key="frame" x="0.0" y="16" width="375" height="93"/>
-                                <color key="backgroundColor" red="0.99999719860000003" green="0.9999815822" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <items>
-                                    <navigationItem title="Создать задачу" id="gKU-vX-bZc">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VDe-eN-LNR">
-                                            <color key="tintColor" red="1" green="0.1706703795" blue="0.02509948087" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="TVJ-qY-1pk">
-                                            <connections>
-                                                <segue destination="s8F-Yh-38f" kind="unwind" unwindAction="unwindWithSegue:" id="3Go-ew-FfK"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите название задачи" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cps-hK-2aX">
-                                <rect key="frame" x="16" y="125" width="343" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="ahS-IT-0Zo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Wjs-Pu-Aw7">
-                                <rect key="frame" x="8" y="211" width="359" height="251.5"/>
+                                <rect key="frame" x="8" y="180" width="359" height="233.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bJ-2w-FNz">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="20.5"/>
@@ -157,7 +162,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uhP-Xs-BSt">
-                                        <rect key="frame" x="0.0" y="36.5" width="359" height="215"/>
+                                        <rect key="frame" x="0.0" y="36.5" width="359" height="197"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -166,25 +171,34 @@
                                     </textView>
                                 </subviews>
                             </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите название задачи" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cps-hK-2aX">
+                                <rect key="frame" x="16" y="116" width="343" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="ahS-IT-0Zo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rqj-da-3hG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fcm-cb-N6D" firstAttribute="trailing" secondItem="rqj-da-3hG" secondAttribute="trailing" id="0SZ-nO-QlW"/>
-                            <constraint firstItem="Cps-hK-2aX" firstAttribute="top" secondItem="fcm-cb-N6D" secondAttribute="bottom" constant="16" id="1Rl-oW-Rd8"/>
-                            <constraint firstItem="fcm-cb-N6D" firstAttribute="top" secondItem="rqj-da-3hG" secondAttribute="top" constant="16" id="8yp-Ep-zyw"/>
+                            <constraint firstItem="rqj-da-3hG" firstAttribute="bottom" secondItem="Wjs-Pu-Aw7" secondAttribute="bottom" constant="155.5" id="5A7-Vi-AxI"/>
                             <constraint firstItem="Cps-hK-2aX" firstAttribute="leading" secondItem="rqj-da-3hG" secondAttribute="leading" constant="16" id="BwD-yo-vxp"/>
-                            <constraint firstItem="fcm-cb-N6D" firstAttribute="leading" secondItem="rqj-da-3hG" secondAttribute="leading" id="Hdu-hf-qi0"/>
+                            <constraint firstItem="Wjs-Pu-Aw7" firstAttribute="top" secondItem="Cps-hK-2aX" secondAttribute="bottom" constant="30" id="EfG-Iy-esw"/>
+                            <constraint firstItem="Cps-hK-2aX" firstAttribute="top" secondItem="rqj-da-3hG" secondAttribute="top" constant="72" id="NUz-t3-56n"/>
                             <constraint firstItem="rqj-da-3hG" firstAttribute="trailing" secondItem="Wjs-Pu-Aw7" secondAttribute="trailing" constant="8" id="Nfd-p4-1AV"/>
                             <constraint firstItem="Wjs-Pu-Aw7" firstAttribute="leading" secondItem="rqj-da-3hG" secondAttribute="leading" constant="8" id="T45-xG-ui3"/>
                             <constraint firstItem="rqj-da-3hG" firstAttribute="trailing" secondItem="Cps-hK-2aX" secondAttribute="trailing" constant="16" id="bwe-TF-ItX"/>
-                            <constraint firstItem="rqj-da-3hG" firstAttribute="bottom" secondItem="Wjs-Pu-Aw7" secondAttribute="bottom" constant="155.5" id="dsz-kT-B7v"/>
-                            <constraint firstItem="Wjs-Pu-Aw7" firstAttribute="top" secondItem="Cps-hK-2aX" secondAttribute="bottom" constant="52" id="ebO-mY-pdl"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Создать задачу" id="91C-vv-WcX">
-                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="ukf-mA-IVC"/>
+                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="ukf-mA-IVC">
+                            <connections>
+                                <segue destination="s8F-Yh-38f" kind="unwind" unwindAction="unwindWithSegue:" id="vbK-6X-aYq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -214,14 +228,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w9I-gP-yuG">
-                                            <rect key="frame" x="16" y="6" width="25" height="14.5"/>
+                                            <rect key="frame" x="16" y="3" width="38" height="24"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1ka-Nj-pz2">
-                                            <rect key="frame" x="16" y="22.5" width="40.5" height="13.5"/>
+                                            <rect key="frame" x="16" y="27" width="40.5" height="13.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <nil key="textColor"/>
@@ -286,6 +300,9 @@
         <image name="xmark.seal" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

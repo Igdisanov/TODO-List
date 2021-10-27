@@ -15,6 +15,15 @@ class CompletedTaskTableViewController: UITableViewController {
     
     var trueTaskList: TaskList!
     
+    var formater: String {
+        get {
+            let formater = DateFormatter()
+            formater.dateStyle = .medium
+            return formater.string(from: Date.init())
+        }
+    }
+    
+    
     
     // MARK: Override funcs
     
@@ -22,21 +31,27 @@ class CompletedTaskTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.rowHeight = 80
+       
         navigationItem.hidesBackButton = true
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
         NotificationCenter.default.addObserver(self, selector: #selector(gotNotification), name: NSNotification.Name(rawValue: "notoficationFromFirstViewController"), object: nil)
         
-    }
-    
-    @objc func gotNotification(notification: Notification) {
-        guard let userInfo = notification.userInfo else {return}
-        guard let taskList = userInfo["task"] as? Task else {return}
-        trueTaskList.trueTaskList.append(taskList)
     }
     
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             tableView.reloadData()
         }
+    
+    
+    // MARK: Notification
+    
+    @objc func gotNotification(notification: Notification) {
+        guard let userInfo = notification.userInfo else {return}
+        guard let taskList = userInfo["task"] as? Task else {return}
+        trueTaskList.trueTaskList.append(taskList)
+    }
     
     
     // MARK: TableView
@@ -54,10 +69,52 @@ class CompletedTaskTableViewController: UITableViewController {
         let task = taskList[indexPath.row]
         cell.textLabel?.text = task.name
         
-        cell.detailTextLabel?.text = "\(Date.init())"
+        cell.detailTextLabel?.text = formater
         
         return cell
     }
+    
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            trueTaskList.trueTaskList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    // MARK: TableView post cell
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let done = doneAction(indexPath: indexPath)
+        return UISwipeActionsConfiguration(actions: [done])
+    }
+    
+    func doneAction(indexPath: IndexPath) -> UIContextualAction {
+        
+        var tL = trueTaskList.trueTaskList[indexPath.row]
+        let action = UIContextualAction(style: .normal, title: "Ok") { [self] (action, view, completion) in
+            
+            
+            tL.isComplete = !tL.isComplete!
+            if tL.isComplete == false {
+                self.trueTaskList.trueTaskList.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                
+               
+            }
+            
+            completion(true)
+        }
+        action.backgroundColor = .orange
+        action.image = UIImage(systemName: "arrowshape.turn.up.backward.2")
+        return action
+    }
+    
     
     
 }

@@ -13,12 +13,17 @@ class NewTaskTableViewController: UITableViewController  {
     // MARK: Properties
     
     var taskListC: TaskList!
+    let dictionary = ["task": TaskList()]
     
-    var falseTaskList: [Task] = []
-    var trueTaskList: [Task] = []
+    var formater: String {
+        get {
+            let formater = DateFormatter()
+            formater.dateStyle = .medium
+            return formater.string(from: Date.init())
+        }
+    }
     
-    
-    
+  
     // MARK: Override funcs
     
     override func viewDidLoad() {
@@ -26,8 +31,12 @@ class NewTaskTableViewController: UITableViewController  {
         
         tableView.rowHeight = 80
         self.navigationItem.leftBarButtonItem = self.editButtonItem
-        
+     
     }
+    // MARK: Notification
+    
+  
+    
  
     
     // MARK: TableView add
@@ -38,6 +47,8 @@ class NewTaskTableViewController: UITableViewController  {
         return taskList.count
     }
     
+   
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let taskList = taskListC.falseTaskList
@@ -45,14 +56,14 @@ class NewTaskTableViewController: UITableViewController  {
         let task = taskList[indexPath.row]
         cell.textLabel?.text = task.name
         
-        cell.detailTextLabel?.text = "\(Date.init())"
+        cell.detailTextLabel?.text = formater
         
         return cell
     }
     
     
     
-    // MARK: TableView cell
+    // MARK: TableView remove cell
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
@@ -66,13 +77,12 @@ class NewTaskTableViewController: UITableViewController  {
         }
     }
     
+    // MARK: TableView post cell
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let done = doneAction(indexPath: indexPath)
         return UISwipeActionsConfiguration(actions: [done])
     }
-    
-    let dictionary = ["task": TaskList()]
     
     func doneAction(indexPath: IndexPath) -> UIContextualAction {
         
@@ -81,12 +91,8 @@ class NewTaskTableViewController: UITableViewController  {
             
             
             tL.isComplete = !tL.isComplete!
-            if tL.isComplete == false {
-                self.falseTaskList[indexPath.row] = tL
-            } else {
-                
+            if tL.isComplete != false {
                 self.taskListC.falseTaskList.remove(at: indexPath.row)
-//                self.taskListC.trueTaskList.append(tL)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notoficationFromFirstViewController"), object: nil, userInfo: ["task": tL])
             }
