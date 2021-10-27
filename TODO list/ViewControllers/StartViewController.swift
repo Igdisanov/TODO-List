@@ -22,6 +22,7 @@ class StartViewController: UIViewController {
 
         newTaskVC.taskListC = TaskList()
         completedVC.trueTaskList = TaskList()
+        completedVC.tableView.reloadData()
     }
     
     
