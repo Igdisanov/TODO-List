@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 class CreateTaskViewController: UIViewController {
@@ -35,9 +36,27 @@ class CreateTaskViewController: UIViewController {
         descriptionTextView.text = ""
         descriptionTextView.backgroundColor = .lightGray
         descriptionTextView.layer.cornerRadius = 10
+        
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        
+        nameTaskTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+    }
+    
+    
+    @objc private func textFieldChanged() {
+        if nameTaskTextField.text?.isEmpty == false {
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        } else {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
    
-    
     
 }

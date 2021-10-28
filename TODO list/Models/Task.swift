@@ -17,7 +17,7 @@ struct Task {
 }
 
 
-class TaskList {
+struct TaskList {
     
     var falseTaskList: [Task] = []
     
