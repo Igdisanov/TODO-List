@@ -6,22 +6,30 @@
 //
 
 import RealmSwift
+import Foundation
 
-struct Task {
+class Task: Object {
     
-    var name: String?
-    var descriptionTask: String?
-    var date: Date?
-    var isComplete: Bool?
+    @objc dynamic  var name: String?
+    @objc dynamic var descriptionTask: String?
+    @objc dynamic var date: Date?
+    @objc dynamic var isComplete: Bool = false
+    
+    convenience init(name: String, descriptionTask: String, date: Date?, isComplete: Bool ){
+        self.init()
+        self.name = name
+        self.descriptionTask = descriptionTask
+        self.date = date
+        self.isComplete = isComplete
+    }
+}
+
+class FalseTask: Task {
     
 }
 
-
-struct TaskList {
-    
-    var falseTaskList: [Task] = []
-    
-    var trueTaskList: [Task] = []
+class TrueTask: Task {
     
 }
+
 

@@ -6,14 +6,15 @@
 //
 
 import UIKit
-
+import RealmSwift
 
 class NewTaskTableViewController: UITableViewController  {
     
     // MARK: Properties
     
-    var taskList: TaskList!
-    let dictionaryFalse = ["task": TaskList()]
+    var falseTask: Results<FalseTask>!
+    
+    // Date formater
     
     var formater: String {
         get {
@@ -23,69 +24,50 @@ class NewTaskTableViewController: UITableViewController  {
         }
     }
     
-  
     // MARK: Override funcs
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = 80
+        
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
-        NotificationCenter.default.addObserver(self, selector: #selector(gtNotification), name: NSNotification.Name(rawValue: "notoficationFromLastViewController"), object: nil)
-     
+        falseTask = realm.objects(FalseTask.self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            tableView.reloadData()
-        }
-    // MARK: Notification
-    
-    @objc func gtNotification(notification: Notification) {
-        guard let userInfo = notification.userInfo else {return}
-        guard let taskList = userInfo["task"] as? Task else {return}
-        self.taskList.falseTaskList.append(taskList)
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
-    
- 
     
     // MARK: TableView add
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let taskList = taskList.falseTaskList
         
-        return taskList.count
+        return falseTask.isEmpty ? 0 : falseTask.count
     }
-    
-   
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let taskList = taskList.falseTaskList
-
-        let task = taskList[indexPath.row]
-        cell.textLabel?.text = task.name
         
+        let task = falseTask[indexPath.row]
+        cell.textLabel?.text = task.name
         cell.detailTextLabel?.text = formater
         
         return cell
     }
     
-    
-    
     // MARK: TableView remove cell
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-            taskList.falseTaskList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let task = falseTask[indexPath.row]
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
+            StorageManager.deleteObject(task)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
     // MARK: TableView post cell
@@ -97,15 +79,24 @@ class NewTaskTableViewController: UITableViewController  {
     
     func doneAction(indexPath: IndexPath) -> UIContextualAction {
         
-        var tL = taskList.falseTaskList[indexPath.row]
+        let task = falseTask[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Ok") { [self] (action, view, completion) in
             
+            try! realm.write {
+                task.isComplete = true
+            }
             
-            tL.isComplete = !tL.isComplete!
-            if tL.isComplete != false {
-                self.taskList.falseTaskList.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notoficationFromFirstViewController"), object: nil, userInfo: ["task": tL])
+            if task.isComplete != false {
+                
+                
+                StorageManager.saveObject(TrueTask(name: task.name!,
+                                                   descriptionTask: task.descriptionTask!,
+                                                   date: task.date,
+                                                   isComplete: task.isComplete))
+                
+                StorageManager.deleteObject(task)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                
             }
             
             completion(true)
@@ -119,34 +110,35 @@ class NewTaskTableViewController: UITableViewController  {
     
     @IBAction func addTaskUIBB(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "addSegue", sender: nil)
-        print("go")
-        
     }
     
     
     
     // MARK: Navigaton
     
-        @IBAction func unwind (segue: UIStoryboardSegue) {
-    
-            guard let creatTaskVC = segue.source as? CreateTaskViewController else {return}
-            let task = creatTaskVC.task
-            let newIndexPath = IndexPath(row: taskList.falseTaskList.count, section: 0)
-            taskList.falseTaskList.append(task)
-            tableView.insertRows(at: [newIndexPath], with: .fade)
-
-           }
-    //
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            guard let creatVC = segue.destination as? CreateTaskViewController else { return }
-            guard let comletedVC = self.tabBarController?.viewControllers?.last as? CompletedTaskTableViewController else {return}
-            let newIndexPath = IndexPath(row: comletedVC.taskList.falseTaskList.count, section: 0)
-            comletedVC.taskList = taskList
-            comletedVC.tableView.insertRows(at: [newIndexPath], with: .fade)
-            creatVC.taskList = taskList
-           
+    @IBAction func unwind (segue: UIStoryboardSegue) {
+        
+        guard let creatTaskVC = segue.source as? CreateTaskViewController else {return}
+        let task = creatTaskVC.task
+        
+        if creatTaskVC.currentTask != nil{
+            try! realm.write{
+                creatTaskVC.currentTask.name = creatTaskVC.nameTaskTextField.text
+                creatTaskVC.currentTask.descriptionTask = creatTaskVC.descriptionTextView.text
+            }
+        } else {
+            StorageManager.saveObject(task)
         }
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail"{
+            guard let indexPath = tableView.indexPathForSelectedRow else {return}
+            let task = falseTask[indexPath.row]
+            let creatVC = segue.destination as! CreateTaskViewController
+            creatVC.currentTask = task
+        }
+    }
     
     
     
