@@ -86,7 +86,7 @@ class CompletedTaskTableViewController: UITableViewController {
                 task.isComplete = false
             }
             
-            if task.isComplete == false {
+            if !task.isComplete {
                 
                 StorageManager.saveObject(FalseTask(name: task.name!,
                                                     descriptionTask: task.descriptionTask!,

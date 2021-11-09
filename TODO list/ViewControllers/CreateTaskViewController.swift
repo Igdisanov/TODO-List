@@ -32,9 +32,7 @@ class CreateTaskViewController: UIViewController {
         super.viewDidLoad()
         
         
-        descriptionTextView.text = ""
-        descriptionTextView.backgroundColor = .lightGray
-        descriptionTextView.layer.cornerRadius = 10
+        descriptionTextViewЫtylization()
         
         navigationItem.rightBarButtonItem?.isEnabled = false
         
@@ -71,6 +69,11 @@ class CreateTaskViewController: UIViewController {
         
     }
     
+    private func descriptionTextViewЫtylization() {
+        descriptionTextView.text = ""
+        descriptionTextView.backgroundColor = .lightGray
+        descriptionTextView.layer.cornerRadius = 10
+    }
     
    
    
