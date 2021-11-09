@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Registration View Controller-->
         <scene sceneID="Qj2-XM-LSk">
             <objects>
-                <viewController id="gtn-Ie-i9F" sceneMemberID="viewController">
+                <viewController id="gtn-Ie-i9F" customClass="RegistrationViewController" customModule="TODO_list" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x9w-Bc-hwk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,12 +26,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HHQ-d5-UrR">
                                 <rect key="frame" x="32" y="273" width="311" height="76"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0jd-aw-fKX">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0jd-aw-fKX">
                                         <rect key="frame" x="0.0" y="0.0" width="311" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eli-SN-ySO">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eli-SN-ySO">
                                         <rect key="frame" x="0.0" y="42" width="311" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -46,12 +46,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButtomPressed:" destination="gtn-Ie-i9F" eventType="touchUpInside" id="lZu-9n-KkJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRc-DY-5ql">
                                 <rect key="frame" x="132.5" y="453" width="110" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Registration"/>
+                                <connections>
+                                    <action selector="registrationButtomPressed:" destination="gtn-Ie-i9F" eventType="touchUpInside" id="FyL-0L-1O3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eTX-fy-g5m"/>
@@ -70,6 +76,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="e8H-kW-85M"/>
                     <connections>
+                        <outlet property="loginTextView" destination="0jd-aw-fKX" id="8EW-hH-Z5O"/>
+                        <outlet property="passwordTextView" destination="eli-SN-ySO" id="dSu-mO-y3Z"/>
                         <segue destination="hC4-Fo-Yjz" kind="show" identifier="registrationSegue" id="hMb-7Z-gK1"/>
                     </connections>
                 </viewController>
@@ -140,11 +148,18 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="QCO-fs-Q3l"/>
                     <navigationItem key="navigationItem" title="Новые задачи" largeTitleDisplayMode="never" id="TAm-O7-nmI">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iQx-va-Rvm">
-                            <connections>
-                                <action selector="addTaskUIBB:" destination="FQg-MV-8NI" id="9wx-Vb-vEB"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="iQx-va-Rvm">
+                                <connections>
+                                    <action selector="addTaskUIBB:" destination="FQg-MV-8NI" id="9wx-Vb-vEB"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Exet" id="gly-ih-Ngt">
+                                <connections>
+                                    <segue destination="6OG-6x-EhS" kind="unwind" unwindAction="unwindSegueWithSegue:" id="fYt-M2-haa"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -152,6 +167,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lMn-p3-f6t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="6OG-6x-EhS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4335.1999999999998" y="-177.66116941529236"/>
         </scene>
