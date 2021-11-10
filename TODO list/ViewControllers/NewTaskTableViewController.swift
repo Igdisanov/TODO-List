@@ -12,8 +12,9 @@ class NewTaskTableViewController: UITableViewController  {
     
     // MARK: Properties
     
-    var falseTask: Results<FalseTask>!
     
+    var task: Results<Task>!
+   
     // Date formater
     
     var formater: String {
@@ -24,6 +25,15 @@ class NewTaskTableViewController: UITableViewController  {
         }
     }
     
+    private func isCompleteRevers() -> [Task] {
+        var tasks: [Task] = []
+        for tsk in task {
+            if tsk.isComplete == false {
+                tasks.append(tsk)
+            }
+        }
+        return tasks
+    }
     // MARK: Override funcs
     
     override func viewDidLoad() {
@@ -33,26 +43,35 @@ class NewTaskTableViewController: UITableViewController  {
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
-        falseTask = realm.objects(FalseTask.self)
+        
+        task = realm.objects(Task.self)
+
+                
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        
     }
     
     // MARK: TableView add
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return falseTask.isEmpty ? 0 : falseTask.count
+        let tasks = isCompleteRevers()
+        return tasks.isEmpty ? 0 : tasks.count //
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let task = falseTask[indexPath.row]
-        cell.textLabel?.text = task.name
+        let tasks = isCompleteRevers()
+        
+        let task = tasks[indexPath.row] //
+        
+            
+            cell.textLabel?.text = task.name
         cell.detailTextLabel?.text = formater
         
         return cell
@@ -61,7 +80,10 @@ class NewTaskTableViewController: UITableViewController  {
     // MARK: TableView remove cell
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let task = falseTask[indexPath.row]
+        
+        let tasks = isCompleteRevers()
+        
+        let task = tasks[indexPath.row] //
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
             StorageManager.deleteObject(task)
             tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -79,26 +101,17 @@ class NewTaskTableViewController: UITableViewController  {
     
     func doneAction(indexPath: IndexPath) -> UIContextualAction {
         
-        let task = falseTask[indexPath.row]
+        let tasks = isCompleteRevers()
+        
+        let task = tasks[indexPath.row] //
         let action = UIContextualAction(style: .normal, title: "Ok") { [self] (action, view, completion) in
             
             try! realm.write {
                 task.isComplete = true
+                task.dueDate = Date.init()
             }
-            
-            if task.isComplete {
-                
-                
-                StorageManager.saveObject(TrueTask(name: task.name!,
-                                                   descriptionTask: task.descriptionTask!,
-                                                   date: task.date,
-                                                   isComplete: task.isComplete))
-                
-                StorageManager.deleteObject(task)
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-                
-            }
-            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+           
             completion(true)
         }
         action.backgroundColor = .green
@@ -114,9 +127,9 @@ class NewTaskTableViewController: UITableViewController  {
     
     @IBAction func SortSelection(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            falseTask = falseTask.sorted(byKeyPath: "date")
+            task = task.sorted(byKeyPath: "date")
         } else {
-            falseTask = falseTask.sorted(byKeyPath: "name")
+            task = task.sorted(byKeyPath: "name")
         }
         tableView.reloadData()
     }
@@ -142,7 +155,8 @@ class NewTaskTableViewController: UITableViewController  {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail"{
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
-            let task = falseTask[indexPath.row]
+            let tasks = isCompleteRevers()
+            let task = tasks[indexPath.row] //
             let creatVC = segue.destination as! CreateTaskViewController
             creatVC.currentTask = task
         }

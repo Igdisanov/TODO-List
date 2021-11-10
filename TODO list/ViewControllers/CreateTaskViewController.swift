@@ -18,7 +18,7 @@ class CreateTaskViewController: UIViewController {
     
     
     var task: Task {
-        let task  = FalseTask(name: nameTaskTextField.text!,
+        let task  = Task(name: nameTaskTextField.text!, //
                          descriptionTask: descriptionTextView.text!,
                          date: Date.init(),
                          isComplete: false)

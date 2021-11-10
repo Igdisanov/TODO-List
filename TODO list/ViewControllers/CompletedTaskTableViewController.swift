@@ -13,7 +13,8 @@ class CompletedTaskTableViewController: UITableViewController {
     
     // MARK: Properties
     
-    var trueTask: Results<TrueTask>!
+    
+    var task: Results<Task>!
     
     var formater: String {
         get {
@@ -21,6 +22,17 @@ class CompletedTaskTableViewController: UITableViewController {
             formater.dateStyle = .medium
             return formater.string(from: Date.init())
         }
+    }
+    
+    private func isCompleteRevers() -> [Task] {
+        var tasks: [Task] = []
+        
+        for tsk in task {
+            if tsk.isComplete == true {
+                tasks.append(tsk)
+            }
+        }
+        return tasks
     }
     
     // MARK: Override funcs
@@ -33,7 +45,8 @@ class CompletedTaskTableViewController: UITableViewController {
         navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
-        trueTask = realm.objects(TrueTask.self)
+        task = realm.objects(Task.self)
+        task = task.sorted(byKeyPath: "dueDate")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,13 +59,17 @@ class CompletedTaskTableViewController: UITableViewController {
     // MARK: TableView
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trueTask.isEmpty ? 0 : trueTask.count
+        let tasks = isCompleteRevers()
+        return tasks.isEmpty ? 0 : tasks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CompletedSell", for: indexPath)
-        let task = trueTask[indexPath.row]
+        let tasks = isCompleteRevers()
+       
+        
+        let task = tasks[indexPath.row] //
         cell.textLabel?.text = task.name
         cell.detailTextLabel?.text = formater
         
@@ -61,7 +78,8 @@ class CompletedTaskTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let task = trueTask[indexPath.row]
+        let tasks = isCompleteRevers()
+        let task = tasks[indexPath.row] //
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
             StorageManager.deleteObject(task)
             tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -79,23 +97,16 @@ class CompletedTaskTableViewController: UITableViewController {
     
     func doneAction(indexPath: IndexPath) -> UIContextualAction {
         
-        let task = trueTask[indexPath.row]
+        let tasks = isCompleteRevers()
+        
+        let task = tasks[indexPath.row] //
         let action = UIContextualAction(style: .normal, title: "Ok") { [self] (action, view, completion) in
             
             try! realm.write {
                 task.isComplete = false
             }
             
-            if !task.isComplete {
-                
-                StorageManager.saveObject(FalseTask(name: task.name!,
-                                                    descriptionTask: task.descriptionTask!,
-                                                    date: task.date,
-                                                    isComplete: task.isComplete))
-                
-                StorageManager.deleteObject(task)
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
             
             completion(true)
         }
@@ -105,10 +116,11 @@ class CompletedTaskTableViewController: UITableViewController {
     }
     
     @IBAction func sortSelection(_ sender: UISegmentedControl) {
+        
         if sender.selectedSegmentIndex == 0 {
-            trueTask = trueTask.sorted(byKeyPath: "date")
+            task = task.sorted(byKeyPath: "dueDate")
         } else {
-            trueTask = trueTask.sorted(byKeyPath: "name")
+            task = task.sorted(byKeyPath: "name")
         }
         tableView.reloadData()
     }
