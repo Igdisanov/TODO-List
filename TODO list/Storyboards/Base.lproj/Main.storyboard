@@ -112,9 +112,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="A33-Dr-tpl">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Date"/>
+                                <segment title="Name"/>
+                            </segments>
+                            <connections>
+                                <action selector="SortSelection:" destination="FQg-MV-8NI" eventType="valueChanged" id="eLq-5N-sfe"/>
+                            </connections>
+                        </segmentedControl>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="QWc-Iy-UVe" detailTextLabel="v4V-SL-7qS" style="IBUITableViewCellStyleSubtitle" id="BL6-Ug-WgC">
-                                <rect key="frame" x="0.0" y="44.5" width="375" height="61.5"/>
+                                <rect key="frame" x="0.0" y="76.5" width="375" height="61.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BL6-Ug-WgC" id="cBM-Sb-wNK">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="61.5"/>
@@ -169,7 +180,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lMn-p3-f6t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="6OG-6x-EhS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4335.1999999999998" y="-177.66116941529236"/>
+            <point key="canvasLocation" x="4326" y="-211"/>
         </scene>
         <!--Создать задачу-->
         <scene sceneID="LaU-Ri-Ngx">
@@ -246,9 +257,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="MWj-GH-4SR">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Date"/>
+                                <segment title="Name"/>
+                            </segments>
+                            <connections>
+                                <action selector="sortSelection:" destination="pzY-VG-ZXC" eventType="valueChanged" id="N8z-l9-n2o"/>
+                            </connections>
+                        </segmentedControl>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompletedSell" textLabel="w9I-gP-yuG" detailTextLabel="1ka-Nj-pz2" style="IBUITableViewCellStyleSubtitle" id="h45-sA-IA6">
-                                <rect key="frame" x="0.0" y="44.5" width="375" height="61.5"/>
+                                <rect key="frame" x="0.0" y="76.5" width="375" height="61.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h45-sA-IA6" id="mBh-Qr-sde">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="61.5"/>
