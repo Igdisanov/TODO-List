@@ -13,7 +13,7 @@ class CompletedTaskTableViewController: UITableViewController {
     
     // MARK: Properties
     
-    var trueTask: Results<TrueTask>! // delete
+    
     var task: Results<Task>!
     
     var formater: String {
@@ -44,7 +44,7 @@ class CompletedTaskTableViewController: UITableViewController {
         navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
-        trueTask = realm.objects(TrueTask.self) // delete
+        
         task = realm.objects(Task.self)
     }
     
