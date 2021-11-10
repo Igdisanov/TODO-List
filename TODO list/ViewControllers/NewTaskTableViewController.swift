@@ -64,14 +64,14 @@ class NewTaskTableViewController: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         
         let tasks = isCompleteRevers()
         
         let task = tasks[indexPath.row] //
         
-        cell.textLabel?.text = task.name
-        cell.detailTextLabel?.text = formater
+        cell.nameLabel.text = task.name
+        cell.dateLabel.text = formater
         
         return cell
     }

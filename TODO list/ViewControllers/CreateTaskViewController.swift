@@ -15,6 +15,7 @@ class CreateTaskViewController: UIViewController {
 
     @IBOutlet var nameTaskTextField: UITextField!
     @IBOutlet var descriptionTextView: UITextView!
+    @IBOutlet var imageViewAdd: UIImageView!
     
     
     var task: Task {
@@ -76,6 +77,8 @@ class CreateTaskViewController: UIViewController {
     }
     
    
-   
+    @IBAction func addImageButtonPressed(_ sender: UIButton) {
+    }
+    
     
 }
