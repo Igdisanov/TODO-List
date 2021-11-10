@@ -108,6 +108,7 @@ class NewTaskTableViewController: UITableViewController  {
             
             try! realm.write {
                 task.isComplete = true
+                task.dueDate = Date.init()
             }
             tableView.deleteRows(at: [indexPath], with: .automatic)
            
