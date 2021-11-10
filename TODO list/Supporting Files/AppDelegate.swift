@@ -16,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let config = Realm.Configuration(
-            schemaVersion: 1, // Set the new schema version.
+            schemaVersion: 2, // Set the new schema version.
             migrationBlock: { migration, oldSchemaVersion in
-                if oldSchemaVersion < 1 {
+                if oldSchemaVersion < 2 {
                     // The enumerateObjects(ofType:_:) method iterates over
                     // every Person object stored in the Realm file to apply the migration
 //                    migration.enumerateObjects(ofType: Person.className()) { oldObject, newObject in

@@ -15,6 +15,7 @@ class Task: Object {
     @objc dynamic var date: Date?
     @objc dynamic var dueDate: Date? = nil
     @objc dynamic var isComplete: Bool = false
+    @objc dynamic var imageData: Data?
     
     
     convenience init(name: String, descriptionTask: String, date: Date?, isComplete: Bool ){
