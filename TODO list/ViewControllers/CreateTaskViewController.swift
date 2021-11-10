@@ -100,16 +100,25 @@ class CreateTaskViewController: UIViewController {
 }
 
 
-extension CreateTaskViewController {
+extension CreateTaskViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func chooseImagePicket(source: UIImagePickerController.SourceType){
         
         if UIImagePickerController.isSourceTypeAvailable(source){
             let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
             imagePicker.allowsEditing = true
             imagePicker.sourceType = source
             present(imagePicker, animated: true)
         }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        imageViewAdd.image = info[.editedImage] as? UIImage
+        imageViewAdd.contentMode = .scaleAspectFit
+        imageViewAdd.clipsToBounds = true
+        dismiss(animated: true)
     }
     
 }
