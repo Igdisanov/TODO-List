@@ -26,6 +26,7 @@ class CompletedTaskTableViewController: UITableViewController {
     
     private func isCompleteRevers() -> [Task] {
         var tasks: [Task] = []
+        
         for tsk in task {
             if tsk.isComplete == true {
                 tasks.append(tsk)
@@ -44,8 +45,8 @@ class CompletedTaskTableViewController: UITableViewController {
         navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
-        
         task = realm.objects(Task.self)
+        task = task.sorted(byKeyPath: "dueDate")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +67,8 @@ class CompletedTaskTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CompletedSell", for: indexPath)
         let tasks = isCompleteRevers()
+       
+        
         let task = tasks[indexPath.row] //
         cell.textLabel?.text = task.name
         cell.detailTextLabel?.text = formater
@@ -113,10 +116,11 @@ class CompletedTaskTableViewController: UITableViewController {
     }
     
     @IBAction func sortSelection(_ sender: UISegmentedControl) {
+        
         if sender.selectedSegmentIndex == 0 {
-            trueTask = trueTask.sorted(byKeyPath: "date")
+            task = task.sorted(byKeyPath: "dueDate")
         } else {
-            trueTask = trueTask.sorted(byKeyPath: "name")
+            task = task.sorted(byKeyPath: "name")
         }
         tableView.reloadData()
     }

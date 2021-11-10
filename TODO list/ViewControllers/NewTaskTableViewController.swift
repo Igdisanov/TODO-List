@@ -127,9 +127,9 @@ class NewTaskTableViewController: UITableViewController  {
     
     @IBAction func SortSelection(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            falseTask = falseTask.sorted(byKeyPath: "date")
+            task = task.sorted(byKeyPath: "date")
         } else {
-            falseTask = falseTask.sorted(byKeyPath: "name")
+            task = task.sorted(byKeyPath: "name")
         }
         tableView.reloadData()
     }
