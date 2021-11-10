@@ -78,7 +78,38 @@ class CreateTaskViewController: UIViewController {
     
    
     @IBAction func addImageButtonPressed(_ sender: UIButton) {
+        let actionSheet = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+        
+        
+        let photo = UIAlertAction(title: "photo", style: .default) { _ in
+            self.chooseImagePicket(source: .photoLibrary)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        
+        actionSheet.addAction(photo)
+        actionSheet.addAction(cancel)
+        
+        present(actionSheet, animated: true)
     }
     
+    
+}
+
+
+extension CreateTaskViewController {
+    
+    func chooseImagePicket(source: UIImagePickerController.SourceType){
+        
+        if UIImagePickerController.isSourceTypeAvailable(source){
+            let imagePicker = UIImagePickerController()
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = source
+            present(imagePicker, animated: true)
+        }
+    }
     
 }
