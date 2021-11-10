@@ -104,6 +104,14 @@ class CompletedTaskTableViewController: UITableViewController {
         return action
     }
     
+    @IBAction func sortSelection(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            trueTask = trueTask.sorted(byKeyPath: "date")
+        } else {
+            trueTask = trueTask.sorted(byKeyPath: "name")
+        }
+        tableView.reloadData()
+    }
     
     
 }
