@@ -125,6 +125,14 @@ class NewTaskTableViewController: UITableViewController  {
         performSegue(withIdentifier: "addSegue", sender: nil)
     }
     
+    @IBAction func SortSelection(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            falseTask = falseTask.sorted(byKeyPath: "date")
+        } else {
+            falseTask = falseTask.sorted(byKeyPath: "name")
+        }
+        tableView.reloadData()
+    }
     
     
     // MARK: Navigaton
