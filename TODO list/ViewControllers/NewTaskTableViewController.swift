@@ -14,7 +14,7 @@ class NewTaskTableViewController: UITableViewController  {
     
     
     var task: Results<Task>!
-   
+    
     // Date formater
     
     var formater: String {
@@ -45,8 +45,8 @@ class NewTaskTableViewController: UITableViewController  {
         
         
         task = realm.objects(Task.self)
-
-                
+        
+        
     }
     
     
@@ -70,8 +70,7 @@ class NewTaskTableViewController: UITableViewController  {
         
         let task = tasks[indexPath.row] //
         
-            
-            cell.textLabel?.text = task.name
+        cell.textLabel?.text = task.name
         cell.detailTextLabel?.text = formater
         
         return cell
@@ -111,7 +110,7 @@ class NewTaskTableViewController: UITableViewController  {
                 task.dueDate = Date.init()
             }
             tableView.deleteRows(at: [indexPath], with: .automatic)
-           
+            
             completion(true)
         }
         action.backgroundColor = .green
