@@ -17,8 +17,8 @@ class CreateTaskViewController: UIViewController {
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var addImageButton: UIButton!
     @IBOutlet var imageViewAdd: UIImageView!
+    @IBOutlet var deleteImageButton: UIButton!
     
-
     func imageDataConvert() -> Data? {
         guard let image = imageViewAdd.image else {return nil}
         let imageData = image.pngData()
@@ -57,6 +57,7 @@ class CreateTaskViewController: UIViewController {
         
         imageViewAdd.layer.cornerRadius = imageViewAdd.frame.size.height / 2
         
+        deleteImageButton.layer.cornerRadius = 8
         
     }
     
@@ -84,6 +85,9 @@ class CreateTaskViewController: UIViewController {
             navigationItem.rightBarButtonItem?.isEnabled = true
             imageViewAdd.image = UIImage(data: currentTask.imageDat! )
             addImageButton.setTitle("Изменить изображение", for: .normal)
+            deleteImageButton.isHidden = false
+        } else {
+            deleteImageButton.isHidden = true
         }
         
     }
@@ -114,6 +118,12 @@ class CreateTaskViewController: UIViewController {
         present(actionSheet, animated: true)
     }
     
+    @IBAction func deleteImageButtonPressed(_ sender: Any) {
+        try! realm.write{
+            currentTask.imageDat = nil
+        }
+        imageViewAdd.image = UIImage(named: "IMG_2527")
+    }
     
 }
 
