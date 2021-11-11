@@ -144,11 +144,12 @@ class NewTaskTableViewController: UITableViewController  {
         
         guard let creatTaskVC = segue.source as? CreateTaskViewController else {return}
         let task = creatTaskVC.task
-        
+        let imageData = creatTaskVC.imageDataConvert()
         if creatTaskVC.currentTask != nil{
             try! realm.write{
                 creatTaskVC.currentTask.name = creatTaskVC.nameTaskTextField.text
                 creatTaskVC.currentTask.descriptionTask = creatTaskVC.descriptionTextView.text
+                creatTaskVC.currentTask.imageDat = imageData
             }
         } else {
             StorageManager.saveObject(task)

@@ -69,9 +69,11 @@ class CompletedTaskTableViewController: UITableViewController {
        
         
         let task = tasks[indexPath.row] //
+        let startImage = UIImage(named: "IMG_2527")
+        let startImageData = startImage?.pngData()
         cell.nameLabel.text = task.name
         cell.dateLabel.text = formater
-        cell.imageViewCell.image = UIImage(named: "IMG_2527")
+        cell.imageViewCell.image = UIImage(data: (task.imageDat ?? startImageData)!)
         cell.imageViewCell.layer.cornerRadius = cell.imageViewCell.frame.size.height / 2
         
         return cell

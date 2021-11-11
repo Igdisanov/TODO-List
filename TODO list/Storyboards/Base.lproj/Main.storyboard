@@ -251,11 +251,10 @@
                                     <constraint firstAttribute="width" constant="80" id="eyH-nW-kLo"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yK4-Vp-ear">
-                                <rect key="frame" x="112" y="135" width="170" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yK4-Vp-ear">
+                                <rect key="frame" x="112" y="135" width="238" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5op-ns-Qfo"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="ObS-aF-AMr"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Добавить изображение"/>
@@ -267,7 +266,6 @@
                         <viewLayoutGuide key="safeArea" id="rqj-da-3hG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rqj-da-3hG" firstAttribute="trailing" secondItem="yK4-Vp-ear" secondAttribute="trailing" constant="93" id="4Fa-WD-xaY"/>
                             <constraint firstItem="rqj-da-3hG" firstAttribute="bottom" secondItem="Wjs-Pu-Aw7" secondAttribute="bottom" constant="155.5" id="5A7-Vi-AxI"/>
                             <constraint firstItem="Cps-hK-2aX" firstAttribute="leading" secondItem="rqj-da-3hG" secondAttribute="leading" constant="16" id="BwD-yo-vxp"/>
                             <constraint firstItem="Wjs-Pu-Aw7" firstAttribute="top" secondItem="Cps-hK-2aX" secondAttribute="bottom" constant="30" id="EfG-Iy-esw"/>
@@ -276,6 +274,7 @@
                             <constraint firstItem="yK4-Vp-ear" firstAttribute="leading" secondItem="Cfu-79-b0M" secondAttribute="trailing" constant="16" id="POy-e1-Hx4"/>
                             <constraint firstItem="Wjs-Pu-Aw7" firstAttribute="leading" secondItem="rqj-da-3hG" secondAttribute="leading" constant="8" id="T45-xG-ui3"/>
                             <constraint firstItem="rqj-da-3hG" firstAttribute="trailing" secondItem="Cps-hK-2aX" secondAttribute="trailing" constant="16" id="bwe-TF-ItX"/>
+                            <constraint firstItem="rqj-da-3hG" firstAttribute="trailing" secondItem="yK4-Vp-ear" secondAttribute="trailing" constant="25" id="dvR-ha-Lzo"/>
                             <constraint firstItem="Cfu-79-b0M" firstAttribute="top" secondItem="rqj-da-3hG" secondAttribute="top" constant="16" id="hWt-5e-UiS"/>
                             <constraint firstItem="Cfu-79-b0M" firstAttribute="leading" secondItem="rqj-da-3hG" secondAttribute="leading" constant="16" id="nyX-6q-ntC"/>
                             <constraint firstItem="yK4-Vp-ear" firstAttribute="top" secondItem="rqj-da-3hG" secondAttribute="top" constant="39" id="vPl-eA-o8Z"/>
@@ -291,6 +290,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addImageButton" destination="yK4-Vp-ear" id="aIu-dp-PgW"/>
                         <outlet property="descriptionTextView" destination="uhP-Xs-BSt" id="uXt-fA-1AN"/>
                         <outlet property="imageViewAdd" destination="Cfu-79-b0M" id="3cS-a4-e21"/>
                         <outlet property="nameTaskTextField" destination="Cps-hK-2aX" id="83n-TK-d9C"/>

@@ -15,10 +15,11 @@ class CreateTaskViewController: UIViewController {
 
     @IBOutlet var nameTaskTextField: UITextField!
     @IBOutlet var descriptionTextView: UITextView!
+    @IBOutlet var addImageButton: UIButton!
     @IBOutlet var imageViewAdd: UIImageView!
     
 
-    private func imageDataConvert() -> Data? {
+    func imageDataConvert() -> Data? {
         guard let image = imageViewAdd.image else {return nil}
         let imageData = image.pngData()
         return imageData
@@ -75,11 +76,14 @@ class CreateTaskViewController: UIViewController {
     }
     
     private func setupEditScreen() {
+        
         if currentTask != nil{
             title = "Редактировать задачу"
             nameTaskTextField.text = currentTask.name
             descriptionTextView.text = currentTask.descriptionTask
             navigationItem.rightBarButtonItem?.isEnabled = true
+            imageViewAdd.image = UIImage(data: currentTask.imageDat! )
+            addImageButton.setTitle("Изменить изображение", for: .normal)
         }
         
     }
