@@ -129,6 +129,7 @@ class CreateTaskViewController: UIViewController {
         } else {
             imageViewAdd.image = UIImage(named: "396619-200")
             deleteImageButton.isHidden = true
+            
         }
     }
     
@@ -155,6 +156,7 @@ extension CreateTaskViewController: UIImagePickerControllerDelegate, UINavigatio
 //        imageViewAdd.layer.cornerRadius = imageViewAdd.frame.size.height / 2
         imageViewAdd.clipsToBounds = true
         deleteImageButton.isHidden = false
+        addImageButton.setTitle("Изменить изображение", for: .normal)
         dismiss(animated: true)
     }
     
