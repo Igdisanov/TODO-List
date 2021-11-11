@@ -14,7 +14,7 @@ class RegistrationViewController: UIViewController {
     @IBOutlet var passwordTextView: UITextField!
     
     let login = ["Vadim", "Petr", "Aleksandr"]
-    let password = "password"
+    let password = "Password"
     
     
     
