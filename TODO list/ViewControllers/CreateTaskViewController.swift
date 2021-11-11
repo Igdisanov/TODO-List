@@ -53,10 +53,10 @@ class CreateTaskViewController: UIViewController {
         }
         
         nameTaskTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        
         setupEditScreen()
-        
-        imageViewAdd.layer.cornerRadius = imageViewAdd.frame.size.height / 2
-        
+    
+        imageViewAdd.layer.cornerRadius = 10
         deleteImageButton.layer.cornerRadius = 8
         
     }
@@ -85,12 +85,14 @@ class CreateTaskViewController: UIViewController {
             navigationItem.rightBarButtonItem?.isEnabled = true
             imageViewAdd.image = UIImage(data: currentTask.imageDat! )
             addImageButton.setTitle("Изменить изображение", for: .normal)
-            deleteImageButton.isHidden = false
+
         } else {
             deleteImageButton.isHidden = true
         }
         
     }
+    
+    
     
     private func descriptionTextViewЫtylization() {
         descriptionTextView.text = ""
@@ -119,10 +121,15 @@ class CreateTaskViewController: UIViewController {
     }
     
     @IBAction func deleteImageButtonPressed(_ sender: Any) {
-        try! realm.write{
-            currentTask.imageDat = nil
+        if currentTask != nil {
+            try! realm.write{
+                currentTask.imageDat = nil
+            }
+            imageViewAdd.image = UIImage(named: "396619-200")
+        } else {
+            imageViewAdd.image = UIImage(named: "396619-200")
+            deleteImageButton.isHidden = true
         }
-        imageViewAdd.image = UIImage(named: "IMG_2527")
     }
     
 }
@@ -147,6 +154,7 @@ extension CreateTaskViewController: UIImagePickerControllerDelegate, UINavigatio
         imageViewAdd.contentMode = .scaleAspectFit
 //        imageViewAdd.layer.cornerRadius = imageViewAdd.frame.size.height / 2
         imageViewAdd.clipsToBounds = true
+        deleteImageButton.isHidden = false
         dismiss(animated: true)
     }
     
