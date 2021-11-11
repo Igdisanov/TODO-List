@@ -64,14 +64,18 @@ class NewTaskTableViewController: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         
         let tasks = isCompleteRevers()
         
         let task = tasks[indexPath.row] //
+        let startImage = UIImage(named: "IMG_2527")
+        let startImageData = startImage?.pngData()
+        cell.nameLabel.text = task.name
+        cell.dateLabel.text = formater
         
-        cell.textLabel?.text = task.name
-        cell.detailTextLabel?.text = formater
+        cell.imageViewCell.image = UIImage(data: (task.imageDat ?? startImageData)!)
+        cell.imageViewCell.layer.cornerRadius = cell.imageViewCell.frame.size.height / 2
         
         return cell
     }
@@ -140,11 +144,12 @@ class NewTaskTableViewController: UITableViewController  {
         
         guard let creatTaskVC = segue.source as? CreateTaskViewController else {return}
         let task = creatTaskVC.task
-        
+        let imageData = creatTaskVC.imageDataConvert()
         if creatTaskVC.currentTask != nil{
             try! realm.write{
                 creatTaskVC.currentTask.name = creatTaskVC.nameTaskTextField.text
                 creatTaskVC.currentTask.descriptionTask = creatTaskVC.descriptionTextView.text
+                creatTaskVC.currentTask.imageDat = imageData
             }
         } else {
             StorageManager.saveObject(task)

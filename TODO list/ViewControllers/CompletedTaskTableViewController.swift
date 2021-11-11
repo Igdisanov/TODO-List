@@ -64,14 +64,17 @@ class CompletedTaskTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CompletedSell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CompletedSell", for: indexPath) as! CustomComletedTableViewCell
         let tasks = isCompleteRevers()
        
         
         let task = tasks[indexPath.row] //
-        cell.textLabel?.text = task.name
-        cell.detailTextLabel?.text = formater
+        let startImage = UIImage(named: "IMG_2527")
+        let startImageData = startImage?.pngData()
+        cell.nameLabel.text = task.name
+        cell.dateLabel.text = formater
+        cell.imageViewCell.image = UIImage(data: (task.imageDat ?? startImageData)!)
+        cell.imageViewCell.layer.cornerRadius = cell.imageViewCell.frame.size.height / 2
         
         return cell
     }
