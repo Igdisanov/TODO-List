@@ -131,8 +131,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dzq-kX-OHd">
-                                            <rect key="frame" x="15" y="9" width="60" height="61"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="396619-200" translatesAutoresizingMaskIntoConstraints="NO" id="dzq-kX-OHd">
+                                            <rect key="frame" x="15" y="10" width="60" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="HWw-1k-TvI"/>
                                                 <constraint firstAttribute="width" constant="60" id="UbT-6b-zxg"/>
@@ -244,7 +244,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_2527" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-79-b0M">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="396619-200" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-79-b0M">
                                 <rect key="frame" x="16" y="112" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Cfu-79-b0M" secondAttribute="height" multiplier="1:1" id="FhY-PT-ifH"/>
@@ -340,8 +340,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BaP-2t-5NX">
-                                            <rect key="frame" x="15" y="9.5" width="60" height="60"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="396619-200" translatesAutoresizingMaskIntoConstraints="NO" id="BaP-2t-5NX">
+                                            <rect key="frame" x="15" y="10.5" width="60" height="59"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="6II-a6-YsF"/>
                                                 <constraint firstAttribute="height" constant="59" id="g4f-re-ZVX"/>
@@ -458,10 +458,9 @@
         <segue reference="shq-HC-a5k"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="IMG_2527" width="921" height="1228"/>
+        <image name="396619-200" width="200" height="200"/>
         <image name="checkmark.seal" catalog="system" width="128" height="128"/>
         <image name="delete.left" catalog="system" width="128" height="104"/>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="xmark.seal" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
