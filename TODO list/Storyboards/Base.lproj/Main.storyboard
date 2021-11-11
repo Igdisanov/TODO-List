@@ -262,6 +262,14 @@
                                     <action selector="addImageButtonPressed:" destination="j3e-Nd-TYK" eventType="touchUpInside" id="Tgc-dL-vyf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-Pc-qoY">
+                                <rect key="frame" x="116" y="171" width="26" height="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button" image="delete.left" catalog="system"/>
+                                <connections>
+                                    <action selector="deleteImageButtonPressed:" destination="j3e-Nd-TYK" eventType="touchUpInside" id="Rjy-vP-sQc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rqj-da-3hG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -269,14 +277,17 @@
                             <constraint firstItem="rqj-da-3hG" firstAttribute="bottom" secondItem="Wjs-Pu-Aw7" secondAttribute="bottom" constant="155.5" id="5A7-Vi-AxI"/>
                             <constraint firstItem="Cps-hK-2aX" firstAttribute="leading" secondItem="rqj-da-3hG" secondAttribute="leading" constant="16" id="BwD-yo-vxp"/>
                             <constraint firstItem="Wjs-Pu-Aw7" firstAttribute="top" secondItem="Cps-hK-2aX" secondAttribute="bottom" constant="30" id="EfG-Iy-esw"/>
+                            <constraint firstItem="Rog-Pc-qoY" firstAttribute="top" secondItem="yK4-Vp-ear" secondAttribute="bottom" constant="6" id="NH6-zy-71n"/>
                             <constraint firstItem="Cps-hK-2aX" firstAttribute="top" secondItem="rqj-da-3hG" secondAttribute="top" constant="120" id="NUz-t3-56n"/>
                             <constraint firstItem="rqj-da-3hG" firstAttribute="trailing" secondItem="Wjs-Pu-Aw7" secondAttribute="trailing" constant="8" id="Nfd-p4-1AV"/>
                             <constraint firstItem="yK4-Vp-ear" firstAttribute="leading" secondItem="Cfu-79-b0M" secondAttribute="trailing" constant="16" id="POy-e1-Hx4"/>
                             <constraint firstItem="Wjs-Pu-Aw7" firstAttribute="leading" secondItem="rqj-da-3hG" secondAttribute="leading" constant="8" id="T45-xG-ui3"/>
                             <constraint firstItem="rqj-da-3hG" firstAttribute="trailing" secondItem="Cps-hK-2aX" secondAttribute="trailing" constant="16" id="bwe-TF-ItX"/>
                             <constraint firstItem="rqj-da-3hG" firstAttribute="trailing" secondItem="yK4-Vp-ear" secondAttribute="trailing" constant="25" id="dvR-ha-Lzo"/>
+                            <constraint firstItem="rqj-da-3hG" firstAttribute="trailing" secondItem="Rog-Pc-qoY" secondAttribute="trailing" constant="233" id="eQb-MH-50R"/>
                             <constraint firstItem="Cfu-79-b0M" firstAttribute="top" secondItem="rqj-da-3hG" secondAttribute="top" constant="16" id="hWt-5e-UiS"/>
                             <constraint firstItem="Cfu-79-b0M" firstAttribute="leading" secondItem="rqj-da-3hG" secondAttribute="leading" constant="16" id="nyX-6q-ntC"/>
+                            <constraint firstItem="Rog-Pc-qoY" firstAttribute="leading" secondItem="Cfu-79-b0M" secondAttribute="trailing" constant="20" id="uHt-Vc-DRj"/>
                             <constraint firstItem="yK4-Vp-ear" firstAttribute="top" secondItem="rqj-da-3hG" secondAttribute="top" constant="39" id="vPl-eA-o8Z"/>
                         </constraints>
                     </view>
@@ -291,6 +302,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addImageButton" destination="yK4-Vp-ear" id="aIu-dp-PgW"/>
+                        <outlet property="deleteImageButton" destination="Rog-Pc-qoY" id="Q5i-bQ-j4W"/>
                         <outlet property="descriptionTextView" destination="uhP-Xs-BSt" id="uXt-fA-1AN"/>
                         <outlet property="imageViewAdd" destination="Cfu-79-b0M" id="3cS-a4-e21"/>
                         <outlet property="nameTaskTextField" destination="Cps-hK-2aX" id="83n-TK-d9C"/>
@@ -448,6 +460,7 @@
     <resources>
         <image name="IMG_2527" width="921" height="1228"/>
         <image name="checkmark.seal" catalog="system" width="128" height="128"/>
+        <image name="delete.left" catalog="system" width="128" height="104"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="xmark.seal" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
