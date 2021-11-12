@@ -13,4 +13,7 @@ class CustomComletedTableViewCell: UITableViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var imageViewCell: UIImageView!
     
+    
+    
+    
 }
