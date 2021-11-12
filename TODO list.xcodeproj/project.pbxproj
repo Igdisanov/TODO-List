@@ -10,6 +10,12 @@
 		523EB8DD273A806100CBD548 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523EB8DC273A806100CBD548 /* RegistrationViewController.swift */; };
 		528786FC273C0E2000F671A7 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528786FB273C0E2000F671A7 /* CustomTableViewCell.swift */; };
 		52878702273C182900F671A7 /* CustomComletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52878701273C182900F671A7 /* CustomComletedTableViewCell.swift */; };
+		529CBF8C273E71DF00C92A95 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CBF8B273E71DF00C92A95 /* RegistrationPresenter.swift */; };
+		529CBF8E273E71FF00C92A95 /* NewTaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CBF8D273E71FF00C92A95 /* NewTaskPresenter.swift */; };
+		529CBF90273E722500C92A95 /* CompletedTaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CBF8F273E722500C92A95 /* CompletedTaskPresenter.swift */; };
+		529CBF92273E724900C92A95 /* CreateTaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CBF91273E724900C92A95 /* CreateTaskPresenter.swift */; };
+		529CBF94273E755700C92A95 /* RegistrationMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CBF93273E755700C92A95 /* RegistrationMVP.swift */; };
+		529CBF96273E761D00C92A95 /* LoginDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CBF95273E761D00C92A95 /* LoginDAO.swift */; };
 		52B472FD2730EA41009842B1 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B472FC2730EA41009842B1 /* StorageManager.swift */; };
 		52C8771D27284CE2009BC363 /* NavigationTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8771C27284CE2009BC363 /* NavigationTabBarViewController.swift */; };
 		52FE98902725235700D3874F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE988F2725235700D3874F /* AppDelegate.swift */; };
@@ -29,6 +35,12 @@
 		523EB8DC273A806100CBD548 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		528786FB273C0E2000F671A7 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		52878701273C182900F671A7 /* CustomComletedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComletedTableViewCell.swift; sourceTree = "<group>"; };
+		529CBF8B273E71DF00C92A95 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		529CBF8D273E71FF00C92A95 /* NewTaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskPresenter.swift; sourceTree = "<group>"; };
+		529CBF8F273E722500C92A95 /* CompletedTaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTaskPresenter.swift; sourceTree = "<group>"; };
+		529CBF91273E724900C92A95 /* CreateTaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskPresenter.swift; sourceTree = "<group>"; };
+		529CBF93273E755700C92A95 /* RegistrationMVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationMVP.swift; sourceTree = "<group>"; };
+		529CBF95273E761D00C92A95 /* LoginDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDAO.swift; sourceTree = "<group>"; };
 		52B472FC2730EA41009842B1 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		52C8771C27284CE2009BC363 /* NavigationTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabBarViewController.swift; sourceTree = "<group>"; };
 		52FE988C2725235700D3874F /* TODO list.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TODO list.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +70,178 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		529CBF77273E6CD900C92A95 /* Regisrtation */ = {
+			isa = PBXGroup;
+			children = (
+				529CBF78273E6CED00C92A95 /* Model */,
+				529CBF79273E6D0900C92A95 /* View */,
+				529CBF7A273E6D1200C92A95 /* Presenter */,
+				529CBF93273E755700C92A95 /* RegistrationMVP.swift */,
+			);
+			path = Regisrtation;
+			sourceTree = "<group>";
+		};
+		529CBF78273E6CED00C92A95 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				529CBF95273E761D00C92A95 /* LoginDAO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		529CBF79273E6D0900C92A95 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				523EB8DC273A806100CBD548 /* RegistrationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		529CBF7A273E6D1200C92A95 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				529CBF8B273E71DF00C92A95 /* RegistrationPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		529CBF7B273E6D4800C92A95 /* OnTasks */ = {
+			isa = PBXGroup;
+			children = (
+				529CBF7F273E6DA700C92A95 /* Model */,
+				529CBF7E273E6D9D00C92A95 /* View */,
+				529CBF7D273E6D9400C92A95 /* Presenter */,
+			);
+			path = OnTasks;
+			sourceTree = "<group>";
+		};
+		529CBF7C273E6D7400C92A95 /* OfTasks */ = {
+			isa = PBXGroup;
+			children = (
+				529CBF82273E6DC700C92A95 /* Model */,
+				529CBF81273E6DBB00C92A95 /* View */,
+				529CBF80273E6DAF00C92A95 /* Presenter */,
+			);
+			path = OfTasks;
+			sourceTree = "<group>";
+		};
+		529CBF7D273E6D9400C92A95 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				529CBF8D273E71FF00C92A95 /* NewTaskPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		529CBF7E273E6D9D00C92A95 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52FE98AA2725252E00D3874F /* NewTaskTableViewController.swift */,
+				528786FB273C0E2000F671A7 /* CustomTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		529CBF7F273E6DA700C92A95 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		529CBF80273E6DAF00C92A95 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				529CBF8F273E722500C92A95 /* CompletedTaskPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		529CBF81273E6DBB00C92A95 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52FE98AC2725263100D3874F /* CompletedTaskTableViewController.swift */,
+				52878701273C182900F671A7 /* CustomComletedTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		529CBF82273E6DC700C92A95 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		529CBF83273E6E4A00C92A95 /* CreateTask */ = {
+			isa = PBXGroup;
+			children = (
+				529CBF86273E6EE500C92A95 /* Model */,
+				529CBF85273E6EDB00C92A95 /* View */,
+				529CBF84273E6E9B00C92A95 /* Presenter */,
+			);
+			path = CreateTask;
+			sourceTree = "<group>";
+		};
+		529CBF84273E6E9B00C92A95 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				529CBF91273E724900C92A95 /* CreateTaskPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		529CBF85273E6EDB00C92A95 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52FE98932725235700D3874F /* CreateTaskViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		529CBF86273E6EE500C92A95 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		529CBF87273E6FD700C92A95 /* General  */ = {
+			isa = PBXGroup;
+			children = (
+				529CBF8A273E704F00C92A95 /* Model */,
+				529CBF89273E704700C92A95 /* View */,
+				529CBF88273E703300C92A95 /* Presenter */,
+			);
+			path = "General ";
+			sourceTree = "<group>";
+		};
+		529CBF88273E703300C92A95 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		529CBF89273E704700C92A95 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52FE98952725235700D3874F /* Main.storyboard */,
+				52FE989A2725235A00D3874F /* LaunchScreen.storyboard */,
+				52C8771C27284CE2009BC363 /* NavigationTabBarViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		529CBF8A273E704F00C92A95 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				52FE98A8272524EF00D3874F /* Task.swift */,
+				52B472FC2730EA41009842B1 /* StorageManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		52FE98832725235700D3874F = {
 			isa = PBXGroup;
 			children = (
@@ -79,22 +263,15 @@
 		52FE988E2725235700D3874F /* TODO list */ = {
 			isa = PBXGroup;
 			children = (
-				52FE98A32725243800D3874F /* Models */,
+				529CBF87273E6FD700C92A95 /* General  */,
+				529CBF77273E6CD900C92A95 /* Regisrtation */,
+				529CBF7B273E6D4800C92A95 /* OnTasks */,
+				529CBF7C273E6D7400C92A95 /* OfTasks */,
+				529CBF83273E6E4A00C92A95 /* CreateTask */,
 				52FE98A42725245100D3874F /* Supporting Files */,
-				52FE98A5272524AF00D3874F /* ViewControllers */,
-				52FE98A6272524C600D3874F /* Storyboards */,
 				52FE98A7272524D800D3874F /* Resourses */,
 			);
 			path = "TODO list";
-			sourceTree = "<group>";
-		};
-		52FE98A32725243800D3874F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				52FE98A8272524EF00D3874F /* Task.swift */,
-				52B472FC2730EA41009842B1 /* StorageManager.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		52FE98A42725245100D3874F /* Supporting Files */ = {
@@ -105,29 +282,6 @@
 				52FE989D2725235A00D3874F /* Info.plist */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		52FE98A5272524AF00D3874F /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				52FE98932725235700D3874F /* CreateTaskViewController.swift */,
-				52FE98AA2725252E00D3874F /* NewTaskTableViewController.swift */,
-				52FE98AC2725263100D3874F /* CompletedTaskTableViewController.swift */,
-				52C8771C27284CE2009BC363 /* NavigationTabBarViewController.swift */,
-				523EB8DC273A806100CBD548 /* RegistrationViewController.swift */,
-				528786FB273C0E2000F671A7 /* CustomTableViewCell.swift */,
-				52878701273C182900F671A7 /* CustomComletedTableViewCell.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		52FE98A6272524C600D3874F /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				52FE98952725235700D3874F /* Main.storyboard */,
-				52FE989A2725235A00D3874F /* LaunchScreen.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		52FE98A7272524D800D3874F /* Resourses */ = {
@@ -269,17 +423,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				529CBF8E273E71FF00C92A95 /* NewTaskPresenter.swift in Sources */,
 				52C8771D27284CE2009BC363 /* NavigationTabBarViewController.swift in Sources */,
+				529CBF8C273E71DF00C92A95 /* RegistrationPresenter.swift in Sources */,
 				52878702273C182900F671A7 /* CustomComletedTableViewCell.swift in Sources */,
 				52FE98AD2725263100D3874F /* CompletedTaskTableViewController.swift in Sources */,
+				529CBF90273E722500C92A95 /* CompletedTaskPresenter.swift in Sources */,
 				52B472FD2730EA41009842B1 /* StorageManager.swift in Sources */,
 				523EB8DD273A806100CBD548 /* RegistrationViewController.swift in Sources */,
+				529CBF92273E724900C92A95 /* CreateTaskPresenter.swift in Sources */,
 				52FE98A9272524EF00D3874F /* Task.swift in Sources */,
 				52FE98AB2725252E00D3874F /* NewTaskTableViewController.swift in Sources */,
 				528786FC273C0E2000F671A7 /* CustomTableViewCell.swift in Sources */,
 				52FE98942725235700D3874F /* CreateTaskViewController.swift in Sources */,
 				52FE98902725235700D3874F /* AppDelegate.swift in Sources */,
+				529CBF94273E755700C92A95 /* RegistrationMVP.swift in Sources */,
 				52FE98922725235700D3874F /* SceneDelegate.swift in Sources */,
+				529CBF96273E761D00C92A95 /* LoginDAO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

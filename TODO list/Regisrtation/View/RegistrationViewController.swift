@@ -8,6 +8,8 @@
 import UIKit
 
 class RegistrationViewController: UIViewController {
+    
+    var presenter: RegistrationPresenterProtocol!
 
     
     @IBOutlet var loginTextView: UITextField!
@@ -29,8 +31,8 @@ class RegistrationViewController: UIViewController {
             guard loginTextView.text == name else {return}
             guard passwordTextView.text == password else {return}
                 performSegue(withIdentifier: "registrationSegue", sender: nil)
-            
         }
+//        self.presenter.setView(registrationViewProtocol: <#T##RegistrationViewProtocol#>)
     }
     
     @IBAction func registrationButtomPressed(_ sender: Any) {
