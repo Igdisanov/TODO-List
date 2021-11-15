@@ -14,7 +14,7 @@ protocol RegistrationModelProtocol {
 }
 
 
-protocol RegistrationViewProtocol: AnyObject {
+protocol RegistrationViewProtocol: class {
     func getLogin()-> String
     func getPassword()-> String
 }
