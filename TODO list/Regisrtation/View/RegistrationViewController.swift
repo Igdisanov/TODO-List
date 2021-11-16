@@ -9,38 +9,70 @@ import UIKit
 
 class RegistrationViewController: UIViewController {
     
-    var presenter: RegistrationPresenterProtocol!
+    var presenter: RegistrationPresenter!
 
     
-    @IBOutlet var loginTextView: UITextField!
-    @IBOutlet var passwordTextView: UITextField!
+    @IBOutlet weak var loginTextView: UITextField!
+    @IBOutlet weak var passwordTextView: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
-    let login = ["Vadim", "Petr", "Aleksandr"]
-    let password = "Password"
-    
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        presenter = RegistrationPresenter()
+        presenter.setRegistrationView(registrationView: self)
+        errorLabel.isHidden = true
+        print("didload")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.loginOnData()
+      print("willApper")
+    }
 
     @IBAction func loginButtomPressed(_ sender: Any) {
-        for name in login {
-            guard loginTextView.text == name else {return}
-            guard passwordTextView.text == password else {return}
-                performSegue(withIdentifier: "registrationSegue", sender: nil)
-        }
-//        self.presenter.setView(registrationViewProtocol: <#T##RegistrationViewProtocol#>)
+        presenter.verifyData()
+        
     }
     
     @IBAction func registrationButtomPressed(_ sender: Any) {
+        
     }
     
     @IBAction func unwindSegue(segue: UIStoryboardSegue){
         loginTextView.text = nil
         passwordTextView.text = nil
+        errorLabel.isHidden = true
     }
+    
+}
+
+
+
+
+extension RegistrationViewController: RegistrationViewProtocol {
+    
+    func getLogin() -> String {
+        return loginTextView.text!
+    }
+    
+    func getPassword() -> String {
+        return passwordTextView.text!
+    }
+    
+    func routeNewTasks() {
+            performSegue(withIdentifier: "registrationSegue", sender: nil)
+        
+    }
+    
+    func showErrorMessage(message: String) {
+        errorLabel.isHidden = false
+        errorLabel.text = message
+    }
+    
+    
+    
     
 }

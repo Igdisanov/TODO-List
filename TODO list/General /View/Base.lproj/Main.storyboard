@@ -59,6 +59,12 @@
                                     <action selector="registrationButtomPressed:" destination="gtn-Ie-i9F" eventType="touchUpInside" id="FyL-0L-1O3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4R-R7-2je">
+                                <rect key="frame" x="32" y="357" width="311" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemPinkColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eTX-fy-g5m"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -68,14 +74,19 @@
                             <constraint firstItem="hRc-DY-5ql" firstAttribute="top" secondItem="DeC-F0-4mX" secondAttribute="bottom" constant="8" id="Kmg-ty-UXg"/>
                             <constraint firstItem="HHQ-d5-UrR" firstAttribute="leading" secondItem="eTX-fy-g5m" secondAttribute="leading" constant="32" id="O87-gy-sCd"/>
                             <constraint firstItem="HHQ-d5-UrR" firstAttribute="top" secondItem="TWG-6Q-8z0" secondAttribute="bottom" constant="75" id="RS4-eL-bky"/>
+                            <constraint firstItem="X4R-R7-2je" firstAttribute="leading" secondItem="eTX-fy-g5m" secondAttribute="leading" constant="32" id="RiB-GQ-VTN"/>
                             <constraint firstItem="hRc-DY-5ql" firstAttribute="centerX" secondItem="x9w-Bc-hwk" secondAttribute="centerX" id="UgM-2q-mCx"/>
                             <constraint firstItem="DeC-F0-4mX" firstAttribute="centerX" secondItem="x9w-Bc-hwk" secondAttribute="centerX" id="VZj-Rs-eep"/>
                             <constraint firstItem="DeC-F0-4mX" firstAttribute="top" secondItem="HHQ-d5-UrR" secondAttribute="bottom" constant="45" id="W7L-Zr-YRz"/>
+                            <constraint firstItem="eTX-fy-g5m" firstAttribute="trailing" secondItem="X4R-R7-2je" secondAttribute="trailing" constant="32" id="eAJ-j5-qnv"/>
                             <constraint firstItem="TWG-6Q-8z0" firstAttribute="top" secondItem="eTX-fy-g5m" secondAttribute="top" constant="90" id="uiZ-fK-Ghy"/>
+                            <constraint firstItem="X4R-R7-2je" firstAttribute="top" secondItem="HHQ-d5-UrR" secondAttribute="bottom" constant="8" symbolic="YES" id="uqq-3d-B8s"/>
+                            <constraint firstItem="DeC-F0-4mX" firstAttribute="top" secondItem="X4R-R7-2je" secondAttribute="bottom" constant="16" id="uuh-J1-CK8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e8H-kW-85M"/>
                     <connections>
+                        <outlet property="errorLabel" destination="X4R-R7-2je" id="ZRX-gn-kkJ"/>
                         <outlet property="loginTextView" destination="0jd-aw-fKX" id="8EW-hH-Z5O"/>
                         <outlet property="passwordTextView" destination="eli-SN-ySO" id="dSu-mO-y3Z"/>
                         <segue destination="hC4-Fo-Yjz" kind="show" identifier="registrationSegue" id="hMb-7Z-gK1"/>
@@ -464,6 +475,9 @@
         <image name="xmark.seal" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

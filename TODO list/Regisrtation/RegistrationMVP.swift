@@ -8,18 +8,38 @@
 import Foundation
 
 
-protocol RegistrationModelProtocol {
+protocol RegistrationRepoProtocol: AnyObject {
     func saveLogin(loginDAO: LoginDAO)
     func loadLogin() -> LoginDAO
 }
 
 
-protocol RegistrationViewProtocol: class {
+protocol RegistrationViewProtocol: AnyObject {
+
     func getLogin()-> String
     func getPassword()-> String
+    func routeNewTasks() // переход на другой viewController
+    func showErrorMessage(message: String)
 }
 
-protocol RegistrationPresenterProtocol {
-    func onLogin()
-    func setView(registrationViewProtocol: RegistrationViewProtocol )
+
+
+class RegistrationModel: RegistrationRepoProtocol {
+    
+    var presenter: RegistrationPresenter!
+    let preferenses = UserDefaults.standard
+    
+    func saveLogin(loginDAO: LoginDAO) {
+        preferenses.set(loginDAO.login, forKey: "Login")
+        preferenses.set(loginDAO.password, forKey: "Password")
+    }
+    
+    func loadLogin() -> LoginDAO {
+       let login = preferenses.string(forKey: "Login")
+        let  password = preferenses.string(forKey: "Password")
+        
+        return LoginDAO(login: login, password: password)
+    }
+    
+    
 }
