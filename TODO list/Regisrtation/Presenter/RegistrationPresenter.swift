@@ -9,12 +9,27 @@ import Foundation
 
 class RegistrationPresenter {
     
-    weak var registrationView: RegistrationViewProtocol!
-    weak var registrationModel: RegistrationRepoProtocol!
     
-   func setRegistrationView(registrationView: RegistrationViewProtocol){
+    weak var registrationView: RegistrationViewProtocol!
+    var registrationModel: RegistrationRepoProtocol!
+    
+    init(){}
+    
+    init(pegistrationRepoProtocol: RegistrationRepoProtocol){
+        self.registrationModel = pegistrationRepoProtocol
+    }
+    
+    
+    func setRegistretionModel(registrationModel: RegistrationRepoProtocol){
+        self.registrationModel = registrationModel
+    }
+    
+    func setRegistrationView(registrationView: RegistrationViewProtocol){
         self.registrationView = registrationView
     }
+    
+    
+    
     
     let loginTest = LoginDAO(login: "test", password: "123")
     
@@ -25,7 +40,8 @@ class RegistrationPresenter {
             else {return registrationView.showErrorMessage(message: "Login or password is not corrent")}
             
             registrationView.routeNewTasks()
-            UserDefaults.standard.set(login, forKey: "login")
+            registrationModel.saveLogin(login: login, password: password)
+//            UserDefaults.standard.set(login, forKey: "login")
         } else {
             registrationView.showErrorMessage(message: "Enter yuo login and password")
         }
@@ -35,9 +51,8 @@ class RegistrationPresenter {
     
     
     func loginOnData(){
-        if let loginTest = UserDefaults.standard.string(forKey: "login"), loginTest.isEmpty == false{
+        if let loginTest = registrationModel?.loadLogin(), loginTest.login?.isEmpty == false{
             registrationView.routeNewTasks()
-            print(loginTest)
         } else {
             print("ne vipolneno")
         }

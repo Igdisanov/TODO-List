@@ -14,7 +14,7 @@ class NewTaskTableViewController: UITableViewController  {
     
     
     var task: Results<Task>!
-    
+//    let presenter: NewTaskPresenter!
     // Date formater
     
     var formater: String {
@@ -53,7 +53,7 @@ class NewTaskTableViewController: UITableViewController  {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        
+
     }
     
     // MARK: TableView add
@@ -169,6 +169,9 @@ class NewTaskTableViewController: UITableViewController  {
     
     
 }
+
+
+extension NewTaskTableViewController {}
 
 
 

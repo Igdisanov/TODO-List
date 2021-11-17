@@ -9,14 +9,14 @@ import Foundation
 
 
 protocol RegistrationRepoProtocol: AnyObject {
-//    var loginDAO: LoginDAO! {get set}
+    //    var loginDAO: LoginDAO! {get set}
     func saveLogin(login: String, password: String)
     func loadLogin() -> LoginDAO
 }
 
 
 protocol RegistrationViewProtocol: AnyObject {
-
+    
     func getLogin()-> String
     func getPassword()-> String
     func routeNewTasks() // переход на другой viewController
@@ -27,12 +27,11 @@ protocol RegistrationViewProtocol: AnyObject {
 
 class RegistrationModel: RegistrationRepoProtocol {
     
-    var presenter: RegistrationPresenter!
     let preferenses = UserDefaults.standard
     
     
     func saveLogin(login: String, password: String) {
-    
+        
         preferenses.set(login, forKey: "login")
         preferenses.set(password, forKey: "password")
     }

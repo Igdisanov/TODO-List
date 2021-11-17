@@ -10,31 +10,30 @@ import UIKit
 class RegistrationViewController: UIViewController {
     
     var presenter: RegistrationPresenter!
+    var registrationRepoProtocol: RegistrationRepoProtocol!
 
     
     @IBOutlet weak var loginTextView: UITextField!
     @IBOutlet weak var passwordTextView: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         presenter = RegistrationPresenter()
         presenter.setRegistrationView(registrationView: self)
+        registrationRepoProtocol = RegistrationModel.init()
+        presenter.setRegistretionModel(registrationModel: registrationRepoProtocol)
         errorLabel.isHidden = true
-        print("didload")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.loginOnData()
-      print("willApper")
     }
 
     @IBAction func loginButtomPressed(_ sender: Any) {
         presenter.verifyData()
-        
     }
     
     @IBAction func registrationButtomPressed(_ sender: Any) {
