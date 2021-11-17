@@ -7,7 +7,8 @@
 
 import Foundation
 
-class LoginDAO {
+class LoginDAO: NSObject, NSCoding {
+    
     
     let login: String?
     let password: String?
@@ -16,4 +17,15 @@ class LoginDAO {
         self.login = login
         self.password = password
     }
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(login, forKey: "login")
+        coder.encode(password, forKey: "password")
+    }
+    
+    required init?(coder: NSCoder) {
+        login = coder.decodeObject(forKey: "login") as? String ?? ""
+        password = coder.decodeObject(forKey: "password") as? String ?? ""
+    }
+    
 }

@@ -45,6 +45,7 @@ class RegistrationViewController: UIViewController {
         loginTextView.text = nil
         passwordTextView.text = nil
         errorLabel.isHidden = true
+        UserDefaults.standard.removeObject(forKey: "login")
     }
     
 }

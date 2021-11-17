@@ -9,7 +9,8 @@ import Foundation
 
 
 protocol RegistrationRepoProtocol: AnyObject {
-    func saveLogin(loginDAO: LoginDAO)
+//    var loginDAO: LoginDAO! {get set}
+    func saveLogin(login: String, password: String)
     func loadLogin() -> LoginDAO
 }
 
@@ -29,14 +30,16 @@ class RegistrationModel: RegistrationRepoProtocol {
     var presenter: RegistrationPresenter!
     let preferenses = UserDefaults.standard
     
-    func saveLogin(loginDAO: LoginDAO) {
-        preferenses.set(loginDAO.login, forKey: "Login")
-        preferenses.set(loginDAO.password, forKey: "Password")
+    
+    func saveLogin(login: String, password: String) {
+    
+        preferenses.set(login, forKey: "login")
+        preferenses.set(password, forKey: "password")
     }
     
     func loadLogin() -> LoginDAO {
-       let login = preferenses.string(forKey: "Login")
-        let  password = preferenses.string(forKey: "Password")
+        let login = preferenses.string(forKey: "login")
+        let  password = preferenses.string(forKey: "password")
         
         return LoginDAO(login: login, password: password)
     }

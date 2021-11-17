@@ -21,28 +21,25 @@ class RegistrationPresenter {
     func verifyData(){
         
         if registrationView.getLogin().isEmpty == false{
-            guard let login = registrationView?.getLogin(), login == loginTest.login
+            guard let login = registrationView?.getLogin(), login == loginTest.login, let password = registrationView?.getPassword(), password == loginTest.password
             else {return registrationView.showErrorMessage(message: "Login or password is not corrent")}
-            guard let password = registrationView?.getPassword(), password == loginTest.password
-            else {return registrationView.showErrorMessage(message: "Login or password is not corrent")}
+            
             registrationView.routeNewTasks()
-            saveLoginTest(login: login, Password: password)
-            print(login)
+            UserDefaults.standard.set(login, forKey: "login")
         } else {
             registrationView.showErrorMessage(message: "Enter yuo login and password")
         }
     }
     
     
-    func saveLoginTest(login: String, Password: String){
-        let login = LoginDAO(login: login, password: Password)
-        registrationModel?.saveLogin(loginDAO: login)
-        print("\(login.login)")
-    }
+    
     
     func loginOnData(){
-        if let loginTest = registrationModel?.loadLogin(), loginTest.login?.isEmpty == false{
+        if let loginTest = UserDefaults.standard.string(forKey: "login"), loginTest.isEmpty == false{
             registrationView.routeNewTasks()
+            print(loginTest)
+        } else {
+            print("ne vipolneno")
         }
     }
     
