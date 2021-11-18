@@ -6,16 +6,23 @@
 //
 
 import Foundation
- 
+
 class CreateModel: CreateSaveProtocol {
-    func saveTasks(name: String, descriptionTask: String, date: Date, isComplete: Bool, imageData: Data) -> Task {
-        let task  = Task(name: name, //
-                         descriptionTask: descriptionTask,
-                         date: date,
-                         isComplete: isComplete,
-                         imageData: imageData
+    
+    var task = Task()
+    
+    func saveTasks(name: String, descriptionTask: String, date: Date, isComplete: Bool, imageData: Data?){
+        task  = Task(
+            name: name,
+            descriptionTask: descriptionTask,
+            date: date,
+            isComplete: isComplete,
+            imageData: imageData
         )
-        return task
+    }
+    
+    func loadTask() -> Task {
+        task
     }
     
 }

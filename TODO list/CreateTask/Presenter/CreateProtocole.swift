@@ -12,12 +12,14 @@ import UIKit
 protocol CreateViewProtocole: AnyObject{
     func getnameTaskTextField() -> String
     func getdescriptionTextView() -> String
-    func getimageViewAdd() -> UIImage
+    func getimageViewAdd() -> Data?
+    func getDate() -> Date
    
     func loadTask(task: Task)
 }
 
 
 protocol CreateSaveProtocol {
-    func saveTasks(name: String, descriptionTask: String, date: Date, isComplete: Bool, imageData: Data) -> Task
+    func saveTasks(name: String, descriptionTask: String, date: Date, isComplete: Bool, imageData: Data?)
+    func loadTask() -> Task
 }

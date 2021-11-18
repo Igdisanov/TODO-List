@@ -18,7 +18,18 @@ class CreatePresenter {
         self.createModel = createModel
     }
     
-   
+    func saveTask(){
+        createModel.saveTasks(name: createView.getnameTaskTextField(),
+                              descriptionTask: createView.getdescriptionTextView(),
+                              date: createView.getDate(),
+                              isComplete: false,
+                              imageData: createView.getimageViewAdd())
+    }
     
+    func loadTask(){
+        if let task = createModel?.loadTask(), task.name?.isEmpty == false{
+            createView.loadTask(task: task)
+        }
+    }
 
 }

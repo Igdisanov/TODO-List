@@ -143,6 +143,8 @@ class NewTaskTableViewController: UITableViewController  {
     @IBAction func unwind (segue: UIStoryboardSegue) {
         
         guard let creatTaskVC = segue.source as? CreateTaskViewController else {return}
+        creatTaskVC.presenter.saveTask()
+        creatTaskVC.presenter.loadTask()
         let task = creatTaskVC.task
         let imageData = creatTaskVC.imageDataConvert()
         if creatTaskVC.currentTask != nil{

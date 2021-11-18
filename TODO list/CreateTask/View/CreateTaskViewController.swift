@@ -29,20 +29,20 @@ class CreateTaskViewController: UIViewController {
     
     
     
-
-        var task: Task {
-    
-            let imageData = imageDataConvert()
-            let task  = Task(name: nameTaskTextField.text!, //
-                             descriptionTask: descriptionTextView.text!,
-                             date: Date.init(),
-                             isComplete: false,
-                             imageData: imageData!
-            )
-    
-            return task
-        }
-    
+var task = Task()
+//        var task: Task {
+//
+//            let imageData = imageDataConvert()
+//            let task  = Task(name: nameTaskTextField.text!, //
+//                             descriptionTask: descriptionTextView.text!,
+//                             date: Date.init(),
+//                             isComplete: false,
+//                             imageData: imageData!
+//            )
+//
+//            return task
+//        }
+//
     
     
     override func viewDidLoad() {
@@ -188,11 +188,16 @@ extension CreateTaskViewController: CreateViewProtocole {
         descriptionTextView.text!
     }
     
-    func getimageViewAdd() -> UIImage{
-        imageViewAdd.image!
+    func getimageViewAdd() -> Data?{
+        imageDataConvert()
     }
     
+    func getDate() -> Date {
+        Date.init()
+    }
+    
+    
     func loadTask(task: Task){
-
+        self.task = task
     }
 }
