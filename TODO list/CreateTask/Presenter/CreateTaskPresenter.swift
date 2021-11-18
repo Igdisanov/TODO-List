@@ -9,8 +9,12 @@ import Foundation
 
 
 class CreatePresenter {
+    
+    // MARK: propertys MVP
     weak var createView: CreateViewProtocole!
     var createModel: CreateSaveProtocol!
+    
+    // MARK: methods MVP
     func setCreatView(createView: CreateViewProtocole){
         self.createView = createView
     }
@@ -18,6 +22,7 @@ class CreatePresenter {
         self.createModel = createModel
     }
     
+    // MARK: save and load task
     func imageDataConvert() -> Data? {
         guard let image = createView?.getimageViewAdd() else {return nil}
         let imageData = image.pngData()

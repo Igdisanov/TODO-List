@@ -12,6 +12,7 @@ import RealmSwift
 class CreateTaskViewController: UIViewController {
     
     var currentTask: Task!
+    
     var presenter: CreatePresenter!
     var createSaveProtocol: CreateSaveProtocol!
     
@@ -31,45 +32,13 @@ class CreateTaskViewController: UIViewController {
         createSaveProtocol = CreateModel()
         presenter.setCreatModel(createModel: createSaveProtocol)
         
-        
-        descriptionTextViewЫtylization()
-        
-        navigationItem.rightBarButtonItem?.isEnabled = false
-        
-        hideBarButtomItem()
-        
-        nameTaskTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
-        
         setupEditScreen()
         
+        descriptionTextViewStylization()
+        hideBarButtomItem()
+        nameTaskTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         imageViewAdd.layer.cornerRadius = 10
-        deleteImageButton.layer.cornerRadius = 8
-        
-    }
-    
-    
-//    Mark: Hide name barButtonItem
-    func hideBarButtomItem(){
-        if let topItem = navigationController?.navigationBar.topItem{
-            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        }
-        
-    }
-    
-    // Of buttom save
-    @objc private func textFieldChanged() {
-        if nameTaskTextField.text?.isEmpty == false {
-            navigationItem.rightBarButtonItem?.isEnabled = true
-        } else {
-            navigationItem.rightBarButtonItem?.isEnabled = false
-        }
-    }
-    
-    
-    // Delete barButtonItem
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     private func setupEditScreen() {
@@ -90,25 +59,17 @@ class CreateTaskViewController: UIViewController {
     
     
     
-    private func descriptionTextViewЫtylization() {
-        descriptionTextView.text = ""
-        descriptionTextView.backgroundColor = .lightGray
-        descriptionTextView.layer.cornerRadius = 10
-    }
-    
     
     @IBAction func addImageButtonPressed(_ sender: UIButton) {
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,
                                             preferredStyle: .actionSheet)
         
-        
         let photo = UIAlertAction(title: "photo", style: .default) { _ in
             self.chooseImagePicket(source: .photoLibrary)
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        
         
         actionSheet.addAction(photo)
         actionSheet.addAction(cancel)
@@ -125,10 +86,8 @@ class CreateTaskViewController: UIViewController {
         } else {
             imageViewAdd.image = UIImage(named: "396619-200")
             deleteImageButton.isHidden = true
-            
         }
     }
-    
 }
 
 
@@ -156,6 +115,44 @@ extension CreateTaskViewController: UIImagePickerControllerDelegate, UINavigatio
     }
     
 }
+
+
+
+
+// MARK: changing screen elements
+extension CreateTaskViewController{
+    
+    
+    // MARK: Hide name barButtonItem
+    func hideBarButtomItem(){
+        if let topItem = navigationController?.navigationBar.topItem{
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+    }
+    
+    // MARK: Of buttom save
+    @objc private func textFieldChanged() {
+        if nameTaskTextField.text?.isEmpty == false {
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        } else {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+    
+    // MARK: Delete barButtonItem
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    // MARK: Stylization descriptionTextView
+    private func descriptionTextViewStylization() {
+        descriptionTextView.text = ""
+        descriptionTextView.backgroundColor = .lightGray
+        descriptionTextView.layer.cornerRadius = 10
+    }
+}
+
 
 
 extension CreateTaskViewController: CreateViewProtocole {
