@@ -10,13 +10,15 @@ import Foundation
 
 class CreatePresenter {
     weak var createView: CreateViewProtocole!
+    var createModel: CreateSaveProtocol!
     func setCreatView(createView: CreateViewProtocole){
         self.createView = createView
     }
-    
-    
-    
-    func addImageView(){
-       
+    func setCreatModel(createModel: CreateSaveProtocol){
+        self.createModel = createModel
     }
+    
+   
+    
+
 }

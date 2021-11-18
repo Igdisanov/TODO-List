@@ -9,7 +9,7 @@ import Foundation
 
 class RegistrationPresenter {
     
-    
+//    Mark: class regerence
     weak var registrationView: RegistrationViewProtocol!
     var registrationModel: RegistrationRepoProtocol!
     
@@ -30,8 +30,11 @@ class RegistrationPresenter {
     func verifyData(){
         
         if registrationView.getLogin().isEmpty == false{
-            guard let login = registrationView?.getLogin(), login == loginTest.login, let password = registrationView?.getPassword(), password == loginTest.password
-            else {return registrationView.showErrorMessage(message: "Login or password is not corrent")}
+            guard
+                let login = registrationView?.getLogin(), login == loginTest.login,
+                let password = registrationView?.getPassword(), password == loginTest.password
+            else
+            {return registrationView.showErrorMessage(message: "Login or password is not corrent")}
             
             registrationView.routeNewTasks()
             registrationModel.saveLogin(login: login, password: password)

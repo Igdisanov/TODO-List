@@ -13,7 +13,8 @@ class CreateTaskViewController: UIViewController {
     
     var currentTask: Task!
     var presenter: CreatePresenter!
-
+    var createSaveProtocol: CreateSaveProtocol!
+    
     @IBOutlet var nameTaskTextField: UITextField!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var addImageButton: UIButton!
@@ -26,25 +27,33 @@ class CreateTaskViewController: UIViewController {
         return imageData
     }
     
-    var task: Task {
-        
-        let imageData = imageDataConvert()
-        let task  = Task(name: nameTaskTextField.text!, //
-                         descriptionTask: descriptionTextView.text!,
-                         date: Date.init(),
-                         isComplete: false,
-                         imageData: imageData!
-        )
-     
-        return task
-    }
+    
+    
+
+        var task: Task {
+    
+            let imageData = imageDataConvert()
+            let task  = Task(name: nameTaskTextField.text!, //
+                             descriptionTask: descriptionTextView.text!,
+                             date: Date.init(),
+                             isComplete: false,
+                             imageData: imageData!
+            )
+    
+            return task
+        }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         presenter = CreatePresenter()
         presenter.setCreatView(createView: self)
+        createSaveProtocol = CreateModel()
+        presenter.setCreatModel(createModel: createSaveProtocol)
+
+        
         descriptionTextViewЫtylization()
         
         navigationItem.rightBarButtonItem?.isEnabled = false
@@ -56,10 +65,15 @@ class CreateTaskViewController: UIViewController {
         nameTaskTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
         setupEditScreen()
-    
+        
         imageViewAdd.layer.cornerRadius = 10
         deleteImageButton.layer.cornerRadius = 8
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        presenter.initTask()
     }
     
     // Of buttom save
@@ -70,7 +84,8 @@ class CreateTaskViewController: UIViewController {
             navigationItem.rightBarButtonItem?.isEnabled = false
         }
     }
-
+    
+    
     // Delete barButtonItem
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -86,7 +101,7 @@ class CreateTaskViewController: UIViewController {
             navigationItem.rightBarButtonItem?.isEnabled = true
             imageViewAdd.image = UIImage(data: currentTask.imageDat! )
             addImageButton.setTitle("Изменить изображение", for: .normal)
-
+            
         } else {
             deleteImageButton.isHidden = true
         }
@@ -101,7 +116,7 @@ class CreateTaskViewController: UIViewController {
         descriptionTextView.layer.cornerRadius = 10
     }
     
-   
+    
     @IBAction func addImageButtonPressed(_ sender: UIButton) {
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,
@@ -154,7 +169,7 @@ extension CreateTaskViewController: UIImagePickerControllerDelegate, UINavigatio
         
         imageViewAdd.image = info[.editedImage] as? UIImage
         imageViewAdd.contentMode = .scaleAspectFit
-//        imageViewAdd.layer.cornerRadius = imageViewAdd.frame.size.height / 2
+        //        imageViewAdd.layer.cornerRadius = imageViewAdd.frame.size.height / 2
         imageViewAdd.clipsToBounds = true
         deleteImageButton.isHidden = false
         addImageButton.setTitle("Изменить изображение", for: .normal)
@@ -166,4 +181,18 @@ extension CreateTaskViewController: UIImagePickerControllerDelegate, UINavigatio
 
 extension CreateTaskViewController: CreateViewProtocole {
     
+    func getnameTaskTextField() -> String {
+        nameTaskTextField.text!
+    }
+    func getdescriptionTextView() -> String{
+        descriptionTextView.text!
+    }
+    
+    func getimageViewAdd() -> UIImage{
+        imageViewAdd.image!
+    }
+    
+    func loadTask(task: Task){
+
+    }
 }
