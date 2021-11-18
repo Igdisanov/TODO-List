@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		523EB8DD273A806100CBD548 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523EB8DC273A806100CBD548 /* RegistrationViewController.swift */; };
+		523FB7BD274612E200405E2E /* CreateProtocole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FB7BC274612E200405E2E /* CreateProtocole.swift */; };
 		5264CA762744E3D200F955C6 /* NewTasksProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264CA752744E3D200F955C6 /* NewTasksProtocol.swift */; };
 		528786FC273C0E2000F671A7 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528786FB273C0E2000F671A7 /* CustomTableViewCell.swift */; };
 		52878702273C182900F671A7 /* CustomComletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52878701273C182900F671A7 /* CustomComletedTableViewCell.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		00126C0656FC9C7E65787871 /* Pods_TODO_list.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TODO_list.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		523EB8DC273A806100CBD548 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		523FB7BC274612E200405E2E /* CreateProtocole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProtocole.swift; sourceTree = "<group>"; };
 		5264CA752744E3D200F955C6 /* NewTasksProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTasksProtocol.swift; sourceTree = "<group>"; };
 		528786FB273C0E2000F671A7 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		52878701273C182900F671A7 /* CustomComletedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComletedTableViewCell.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				529CBF91273E724900C92A95 /* CreateTaskPresenter.swift */,
+				523FB7BC274612E200405E2E /* CreateProtocole.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				529CBF92273E724900C92A95 /* CreateTaskPresenter.swift in Sources */,
 				52FE98A9272524EF00D3874F /* Task.swift in Sources */,
 				52FE98AB2725252E00D3874F /* NewTaskTableViewController.swift in Sources */,
+				523FB7BD274612E200405E2E /* CreateProtocole.swift in Sources */,
 				5264CA762744E3D200F955C6 /* NewTasksProtocol.swift in Sources */,
 				528786FC273C0E2000F671A7 /* CustomTableViewCell.swift in Sources */,
 				52FE98942725235700D3874F /* CreateTaskViewController.swift in Sources */,

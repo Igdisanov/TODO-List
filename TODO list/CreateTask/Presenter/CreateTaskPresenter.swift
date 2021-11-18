@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+
+class CreatePresenter {
+    weak var createView: CreateViewProtocole!
+    func setCreatView(createView: CreateViewProtocole){
+        self.createView = createView
+    }
+    
+    
+    
+    func addImageView(){
+       
+    }
+}

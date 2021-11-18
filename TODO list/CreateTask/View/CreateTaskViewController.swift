@@ -12,6 +12,7 @@ import RealmSwift
 class CreateTaskViewController: UIViewController {
     
     var currentTask: Task!
+    var presenter: CreatePresenter!
 
     @IBOutlet var nameTaskTextField: UITextField!
     @IBOutlet var descriptionTextView: UITextView!
@@ -42,8 +43,8 @@ class CreateTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        presenter = CreatePresenter()
+        presenter.setCreatView(createView: self)
         descriptionTextViewЫtylization()
         
         navigationItem.rightBarButtonItem?.isEnabled = false
@@ -159,5 +160,10 @@ extension CreateTaskViewController: UIImagePickerControllerDelegate, UINavigatio
         addImageButton.setTitle("Изменить изображение", for: .normal)
         dismiss(animated: true)
     }
+    
+}
+
+
+extension CreateTaskViewController: CreateViewProtocole {
     
 }
