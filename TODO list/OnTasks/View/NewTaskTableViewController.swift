@@ -146,7 +146,7 @@ class NewTaskTableViewController: UITableViewController  {
         creatTaskVC.presenter.saveTask()
         creatTaskVC.presenter.loadTask()
         let task = creatTaskVC.task
-        let imageData = creatTaskVC.imageDataConvert()
+        let imageData = creatTaskVC.presenter.imageDataConvert()
         if creatTaskVC.currentTask != nil{
             try! realm.write{
                 creatTaskVC.currentTask.name = creatTaskVC.nameTaskTextField.text

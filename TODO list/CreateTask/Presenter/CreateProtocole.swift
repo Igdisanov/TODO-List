@@ -12,7 +12,7 @@ import UIKit
 protocol CreateViewProtocole: AnyObject{
     func getnameTaskTextField() -> String
     func getdescriptionTextView() -> String
-    func getimageViewAdd() -> Data?
+    func getimageViewAdd() -> UIImage
     func getDate() -> Date
    
     func loadTask(task: Task)

@@ -18,12 +18,18 @@ class CreatePresenter {
         self.createModel = createModel
     }
     
+    func imageDataConvert() -> Data? {
+        guard let image = createView?.getimageViewAdd() else {return nil}
+        let imageData = image.pngData()
+        return imageData
+    }
+    
     func saveTask(){
         createModel.saveTasks(name: createView.getnameTaskTextField(),
                               descriptionTask: createView.getdescriptionTextView(),
                               date: createView.getDate(),
                               isComplete: false,
-                              imageData: createView.getimageViewAdd())
+                              imageData: imageDataConvert())
     }
     
     func loadTask(){
@@ -31,5 +37,7 @@ class CreatePresenter {
             createView.loadTask(task: task)
         }
     }
+    
+    
 
 }

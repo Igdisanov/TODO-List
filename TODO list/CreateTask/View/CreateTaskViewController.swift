@@ -21,29 +21,7 @@ class CreateTaskViewController: UIViewController {
     @IBOutlet var imageViewAdd: UIImageView!
     @IBOutlet var deleteImageButton: UIButton!
     
-    func imageDataConvert() -> Data? {
-        guard let image = imageViewAdd.image else {return nil}
-        let imageData = image.pngData()
-        return imageData
-    }
-    
-    
-    
-var task = Task()
-//        var task: Task {
-//
-//            let imageData = imageDataConvert()
-//            let task  = Task(name: nameTaskTextField.text!, //
-//                             descriptionTask: descriptionTextView.text!,
-//                             date: Date.init(),
-//                             isComplete: false,
-//                             imageData: imageData!
-//            )
-//
-//            return task
-//        }
-//
-    
+    var task = Task()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,15 +30,13 @@ var task = Task()
         presenter.setCreatView(createView: self)
         createSaveProtocol = CreateModel()
         presenter.setCreatModel(createModel: createSaveProtocol)
-
+        
         
         descriptionTextViewЫtylization()
         
         navigationItem.rightBarButtonItem?.isEnabled = false
         
-        if let topItem = navigationController?.navigationBar.topItem{
-            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        }
+        hideBarButtomItem()
         
         nameTaskTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
@@ -71,9 +47,13 @@ var task = Task()
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        presenter.initTask()
+    
+//    Mark: Hide name barButtonItem
+    func hideBarButtomItem(){
+        if let topItem = navigationController?.navigationBar.topItem{
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        
     }
     
     // Of buttom save
@@ -169,7 +149,6 @@ extension CreateTaskViewController: UIImagePickerControllerDelegate, UINavigatio
         
         imageViewAdd.image = info[.editedImage] as? UIImage
         imageViewAdd.contentMode = .scaleAspectFit
-        //        imageViewAdd.layer.cornerRadius = imageViewAdd.frame.size.height / 2
         imageViewAdd.clipsToBounds = true
         deleteImageButton.isHidden = false
         addImageButton.setTitle("Изменить изображение", for: .normal)
@@ -188,8 +167,8 @@ extension CreateTaskViewController: CreateViewProtocole {
         descriptionTextView.text!
     }
     
-    func getimageViewAdd() -> Data?{
-        imageDataConvert()
+    func getimageViewAdd() -> UIImage{
+        imageViewAdd.image!
     }
     
     func getDate() -> Date {
