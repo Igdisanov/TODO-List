@@ -12,6 +12,7 @@ protocol RegistrationRepoProtocol: AnyObject {
     //    var loginDAO: LoginDAO! {get set}
     func saveLogin(login: String, password: String)
     func loadLogin() -> LoginDAO
+    func removeLogin()
 }
 
 
@@ -43,5 +44,9 @@ class RegistrationModel: RegistrationRepoProtocol {
         return LoginDAO(login: login, password: password)
     }
     
+    func removeLogin() {
+        preferenses.removeObject(forKey: "login")
+        preferenses.removeObject(forKey: "password")
+    }
     
 }

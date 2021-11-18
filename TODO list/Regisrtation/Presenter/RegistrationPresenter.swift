@@ -13,12 +13,6 @@ class RegistrationPresenter {
     weak var registrationView: RegistrationViewProtocol!
     var registrationModel: RegistrationRepoProtocol!
     
-    init(){}
-    
-    init(pegistrationRepoProtocol: RegistrationRepoProtocol){
-        self.registrationModel = pegistrationRepoProtocol
-    }
-    
     
     func setRegistretionModel(registrationModel: RegistrationRepoProtocol){
         self.registrationModel = registrationModel
@@ -41,13 +35,15 @@ class RegistrationPresenter {
             
             registrationView.routeNewTasks()
             registrationModel.saveLogin(login: login, password: password)
-//            UserDefaults.standard.set(login, forKey: "login")
+            
         } else {
             registrationView.showErrorMessage(message: "Enter yuo login and password")
         }
     }
     
-    
+    func removeLogin(){
+        registrationModel.removeLogin()
+    }
     
     
     func loginOnData(){

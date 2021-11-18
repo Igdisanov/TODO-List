@@ -10,7 +10,7 @@ import UIKit
 class RegistrationViewController: UIViewController {
     
     var presenter: RegistrationPresenter!
-    var registrationRepoProtocol: RegistrationRepoProtocol!
+    var registrationModel: RegistrationRepoProtocol!
 
     
     @IBOutlet weak var loginTextView: UITextField!
@@ -22,8 +22,10 @@ class RegistrationViewController: UIViewController {
         
         presenter = RegistrationPresenter()
         presenter.setRegistrationView(registrationView: self)
-        registrationRepoProtocol = RegistrationModel.init()
-        presenter.setRegistretionModel(registrationModel: registrationRepoProtocol)
+        
+        registrationModel = RegistrationModel()
+        presenter.setRegistretionModel(registrationModel: registrationModel)
+        
         errorLabel.isHidden = true
     }
     
@@ -44,7 +46,7 @@ class RegistrationViewController: UIViewController {
         loginTextView.text = nil
         passwordTextView.text = nil
         errorLabel.isHidden = true
-        UserDefaults.standard.removeObject(forKey: "login")
+        presenter.removeLogin()
     }
     
 }
