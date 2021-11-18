@@ -55,6 +55,8 @@ class RegistrationViewController: UIViewController {
 
 
 extension RegistrationViewController: RegistrationViewProtocol {
+   
+    
     
     func getLogin() -> String {
         return loginTextView.text!
@@ -64,8 +66,8 @@ extension RegistrationViewController: RegistrationViewProtocol {
         return passwordTextView.text!
     }
     
-    func routeNewTasks() {
-            performSegue(withIdentifier: "registrationSegue", sender: nil)
+    func routeNewTasks(segue: String) {
+            performSegue(withIdentifier: segue, sender: nil)
         
     }
     

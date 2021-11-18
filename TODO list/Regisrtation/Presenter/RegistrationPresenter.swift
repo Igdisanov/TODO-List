@@ -36,7 +36,7 @@ class RegistrationPresenter {
             else
             {return registrationView.showErrorMessage(message: "Login or password is not corrent")}
             
-            registrationView.routeNewTasks()
+            registrationView.routeNewTasks(segue: "falseLoginSegue" )
             registrationModel.saveLogin(login: login, password: password)
             
         } else {
@@ -51,7 +51,7 @@ class RegistrationPresenter {
     
     func loginOnData(){
         if let loginTest = registrationModel?.loadLogin(), loginTest.login?.isEmpty == false{
-            registrationView.routeNewTasks()
+            registrationView.routeNewTasks(segue: "TrueloginSegue" )
         } else {
             print("ne vipolneno")
         }

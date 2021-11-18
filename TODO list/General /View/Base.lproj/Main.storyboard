@@ -89,7 +89,8 @@
                         <outlet property="errorLabel" destination="X4R-R7-2je" id="ZRX-gn-kkJ"/>
                         <outlet property="loginTextView" destination="0jd-aw-fKX" id="8EW-hH-Z5O"/>
                         <outlet property="passwordTextView" destination="eli-SN-ySO" id="dSu-mO-y3Z"/>
-                        <segue destination="hC4-Fo-Yjz" kind="show" identifier="registrationSegue" id="hMb-7Z-gK1"/>
+                        <segue destination="hC4-Fo-Yjz" kind="show" identifier="falseLoginSegue" id="hMb-7Z-gK1"/>
+                        <segue destination="hC4-Fo-Yjz" kind="show" identifier="TrueloginSegue" animates="NO" id="zke-xt-1i0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zqL-R7-7jh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -467,6 +468,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="shq-HC-a5k"/>
+        <segue reference="zke-xt-1i0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="396619-200" width="200" height="200"/>

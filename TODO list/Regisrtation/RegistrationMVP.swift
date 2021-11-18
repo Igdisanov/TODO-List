@@ -20,7 +20,7 @@ protocol RegistrationViewProtocol: AnyObject {
     
     func getLogin()-> String
     func getPassword()-> String
-    func routeNewTasks() // переход на другой viewController
+    func routeNewTasks(segue: String) // переход на другой viewController
     func showErrorMessage(message: String)
 }
 
