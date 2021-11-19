@@ -31,6 +31,7 @@ class CreateTaskViewController: UIViewController {
         presenter.setCreatView(createView: self)
         createSaveProtocol = CreateModel()
         presenter.setCreatModel(createModel: createSaveProtocol)
+        presenter.getTask()
         
         descriptionTextViewStylization()
         setupEditScreen()
@@ -42,12 +43,12 @@ class CreateTaskViewController: UIViewController {
     
     private func setupEditScreen() {
         
-        if currentTask != nil{
+        if presenter.currentTask != nil{
             title = "Редактировать задачу"
-            nameTaskTextField.text = currentTask.name
-            descriptionTextView.text = currentTask.descriptionTask
+            nameTaskTextField.text = presenter.currentTask.name
+            descriptionTextView.text = presenter.currentTask.descriptionTask
             navigationItem.rightBarButtonItem?.isEnabled = true
-            imageViewAdd.image = UIImage(data: currentTask.imageDat! )
+            imageViewAdd.image = UIImage(data: presenter.currentTask.imageDat!)
             addImageButton.setTitle("Изменить изображение", for: .normal)
             
         } else {
@@ -77,9 +78,9 @@ class CreateTaskViewController: UIViewController {
     }
     
     @IBAction func deleteImageButtonPressed(_ sender: Any) {
-        if currentTask != nil {
+        if presenter.currentTask != nil {
             try! realm.write{
-                currentTask.imageDat = nil
+                presenter.currentTask.imageDat = nil
             }
             imageViewAdd.image = UIImage(named: "396619-200")
         } else {
@@ -156,6 +157,8 @@ extension CreateTaskViewController{
 
 extension CreateTaskViewController: CreateViewProtocole {
     
+    
+    
     func getnameTaskTextField() -> String {
         nameTaskTextField.text!
     }
@@ -171,6 +174,10 @@ extension CreateTaskViewController: CreateViewProtocole {
         Date.init()
     }
     
+    func getTask() -> Task {
+        guard let task = currentTask, task.name?.isEmpty == false else {return Task()}
+        return task
+    }
     
     func loadTask(task: Task){
         self.task = task

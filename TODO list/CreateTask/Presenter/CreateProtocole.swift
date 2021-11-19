@@ -14,6 +14,7 @@ protocol CreateViewProtocole: AnyObject{
     func getdescriptionTextView() -> String
     func getimageViewAdd() -> UIImage
     func getDate() -> Date
+    func getTask() -> Task
    
     func loadTask(task: Task)
 }

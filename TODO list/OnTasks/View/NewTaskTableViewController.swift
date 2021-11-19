@@ -147,11 +147,11 @@ class NewTaskTableViewController: UITableViewController  {
         creatTaskVC.presenter.loadTask()
         let task = creatTaskVC.task
         let imageData = creatTaskVC.presenter.imageDataConvert()
-        if creatTaskVC.currentTask != nil{
+        if creatTaskVC.presenter.currentTask != nil{
             try! realm.write{
-                creatTaskVC.currentTask.name = creatTaskVC.nameTaskTextField.text
-                creatTaskVC.currentTask.descriptionTask = creatTaskVC.descriptionTextView.text
-                creatTaskVC.currentTask.imageDat = imageData
+                creatTaskVC.presenter.currentTask.name = creatTaskVC.nameTaskTextField.text
+                creatTaskVC.presenter.currentTask.descriptionTask = creatTaskVC.descriptionTextView.text
+                creatTaskVC.presenter.currentTask.imageDat = imageData
             }
         } else {
             StorageManager.saveObject(task)
@@ -165,6 +165,7 @@ class NewTaskTableViewController: UITableViewController  {
             let task = tasks[indexPath.row] //
             let creatVC = segue.destination as! CreateTaskViewController
             creatVC.currentTask = task
+            
         }
     }
     

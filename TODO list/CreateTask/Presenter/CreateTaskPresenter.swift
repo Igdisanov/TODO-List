@@ -10,6 +10,9 @@ import Foundation
 
 class CreatePresenter {
     
+    
+    var currentTask: Task!
+    
     // MARK: propertys MVP
     weak var createView: CreateViewProtocole!
     var createModel: CreateSaveProtocol!
@@ -43,6 +46,10 @@ class CreatePresenter {
         }
     }
     
+    func getTask(){
+        guard let task = createView?.getTask(), task.name?.isEmpty == false else {return}
+        self.currentTask = task
+    }
     
 
 }
