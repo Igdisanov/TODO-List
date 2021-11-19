@@ -12,6 +12,7 @@ import RealmSwift
 class CreateTaskViewController: UIViewController {
     
     var currentTask: Task!
+
     
     var presenter: CreatePresenter!
     var createSaveProtocol: CreateSaveProtocol!
@@ -22,7 +23,7 @@ class CreateTaskViewController: UIViewController {
     @IBOutlet var imageViewAdd: UIImageView!
     @IBOutlet var deleteImageButton: UIButton!
     
-    var task = Task()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

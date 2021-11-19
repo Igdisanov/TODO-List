@@ -16,7 +16,7 @@ protocol CreateViewProtocole: AnyObject{
     func getDate() -> Date
     func getTask() -> Task
    
-    func loadTask(task: Task)
+ 
     
     func setupEditScreen(title: String, name: String?, description: String?, isEnable: Bool, image: Data, settitle: String, isHidden: Bool)
 }

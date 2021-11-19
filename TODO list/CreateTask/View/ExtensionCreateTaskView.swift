@@ -97,10 +97,6 @@ extension CreateTaskViewController: CreateViewProtocole {
         return task
     }
     
-    func loadTask(task: Task){
-        self.task = task
-    }
-    
     func setupEditScreen(title: String, name: String?, description: String?, isEnable: Bool, image: Data, settitle: String, isHidden: Bool){
         self.title = title
         nameTaskTextField.text = name

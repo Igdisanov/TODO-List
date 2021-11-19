@@ -40,10 +40,8 @@ class CreatePresenter {
                               imageData: imageDataConvert())
     }
     
-    func loadTask(){
-        if let task = createModel?.loadTask(), task.name?.isEmpty == false{
-            createView.loadTask(task: task)
-        }
+    func loadTask()-> Task{
+        createModel.loadTask()
     }
     
     func getTask(){

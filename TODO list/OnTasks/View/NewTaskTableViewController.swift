@@ -144,8 +144,8 @@ class NewTaskTableViewController: UITableViewController  {
         
         guard let creatTaskVC = segue.source as? CreateTaskViewController else {return}
         creatTaskVC.presenter.saveTask()
-        creatTaskVC.presenter.loadTask()
-        let task = creatTaskVC.task
+//        creatTaskVC.presenter.loadTask()
+        let task = creatTaskVC.presenter.loadTask()
         let imageData = creatTaskVC.presenter.imageDataConvert()
         if creatTaskVC.presenter.currentTask != nil{
             try! realm.write{
