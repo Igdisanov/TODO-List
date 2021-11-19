@@ -11,6 +11,7 @@
 		523FB7BD274612E200405E2E /* CreateProtocole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FB7BC274612E200405E2E /* CreateProtocole.swift */; };
 		523FB7BF274641C200405E2E /* CreateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FB7BE274641C200405E2E /* CreateModel.swift */; };
 		5264CA762744E3D200F955C6 /* NewTasksProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264CA752744E3D200F955C6 /* NewTasksProtocol.swift */; };
+		526EFB88274785DF000363E0 /* ExtensionCreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526EFB87274785DF000363E0 /* ExtensionCreateTaskView.swift */; };
 		528786FC273C0E2000F671A7 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528786FB273C0E2000F671A7 /* CustomTableViewCell.swift */; };
 		52878702273C182900F671A7 /* CustomComletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52878701273C182900F671A7 /* CustomComletedTableViewCell.swift */; };
 		529CBF8C273E71DF00C92A95 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CBF8B273E71DF00C92A95 /* RegistrationPresenter.swift */; };
@@ -39,6 +40,7 @@
 		523FB7BC274612E200405E2E /* CreateProtocole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProtocole.swift; sourceTree = "<group>"; };
 		523FB7BE274641C200405E2E /* CreateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateModel.swift; sourceTree = "<group>"; };
 		5264CA752744E3D200F955C6 /* NewTasksProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTasksProtocol.swift; sourceTree = "<group>"; };
+		526EFB87274785DF000363E0 /* ExtensionCreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCreateTaskView.swift; sourceTree = "<group>"; };
 		528786FB273C0E2000F671A7 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		52878701273C182900F671A7 /* CustomComletedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComletedTableViewCell.swift; sourceTree = "<group>"; };
 		529CBF8B273E71DF00C92A95 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				52FE98932725235700D3874F /* CreateTaskViewController.swift */,
+				526EFB87274785DF000363E0 /* ExtensionCreateTaskView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				52FE98942725235700D3874F /* CreateTaskViewController.swift in Sources */,
 				52FE98902725235700D3874F /* AppDelegate.swift in Sources */,
 				529CBF94273E755700C92A95 /* RegistrationMVP.swift in Sources */,
+				526EFB88274785DF000363E0 /* ExtensionCreateTaskView.swift in Sources */,
 				52FE98922725235700D3874F /* SceneDelegate.swift in Sources */,
 				529CBF96273E761D00C92A95 /* LoginDAO.swift in Sources */,
 			);

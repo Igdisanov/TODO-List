@@ -51,11 +51,12 @@ class CreatePresenter {
         self.currentTask = task
     }
     
-
+    
+    // MARK: setup Edit Screen
     func setupEditScreen() {
-
+        
         if currentTask != nil{
-
+            
             createView.setupEditScreen(title: "Редактировать задачу",
                                        name: currentTask.name,
                                        description: currentTask.descriptionTask,
@@ -63,7 +64,7 @@ class CreatePresenter {
                                        image: currentTask.imageDat!,
                                        settitle: "Изменить изображение",
                                        isHidden: false)
-
+            
         }
     }
     
