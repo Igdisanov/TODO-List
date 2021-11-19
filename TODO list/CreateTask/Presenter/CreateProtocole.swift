@@ -19,6 +19,7 @@ protocol CreateViewProtocole: AnyObject{
  
     
     func setupEditScreen(title: String, name: String?, description: String?, isEnable: Bool, image: Data, settitle: String, isHidden: Bool)
+    func deleteImage(image: String, isHidden: Bool)
 }
 
 

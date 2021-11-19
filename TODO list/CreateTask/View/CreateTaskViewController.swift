@@ -61,15 +61,7 @@ class CreateTaskViewController: UIViewController {
     }
     
     @IBAction func deleteImageButtonPressed(_ sender: Any) {
-        if presenter.currentTask != nil {
-            try! realm.write{
-                presenter.currentTask.imageDat = nil
-            }
-            imageViewAdd.image = UIImage(named: "396619-200")
-        } else {
-            imageViewAdd.image = UIImage(named: "396619-200")
-            deleteImageButton.isHidden = true
-        }
+        presenter.deleteImage()
     }
 }
 

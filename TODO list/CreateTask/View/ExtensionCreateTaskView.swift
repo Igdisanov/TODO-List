@@ -106,4 +106,9 @@ extension CreateTaskViewController: CreateViewProtocole {
         addImageButton.setTitle(settitle, for: .normal)
         deleteImageButton.isHidden = isHidden
     }
+    
+    func deleteImage(image: String, isHidden: Bool){
+        imageViewAdd.image = UIImage(named: image)
+        deleteImageButton.isHidden = isHidden
+    }
 }

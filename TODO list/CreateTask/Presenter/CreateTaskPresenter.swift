@@ -66,6 +66,18 @@ class CreatePresenter {
         }
     }
     
-    
+    func deleteImage(){
+        if currentTask != nil {
+            try! realm.write{
+                currentTask.imageDat = nil
+            }
+            createView.deleteImage(image: "396619-200", isHidden: false)
+            
+        } else {
+            createView.deleteImage(image: "396619-200", isHidden: true)
+            
+        }
+    }
+
     
 }
