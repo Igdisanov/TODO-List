@@ -31,10 +31,9 @@ class CreateTaskViewController: UIViewController {
         presenter.setCreatView(createView: self)
         createSaveProtocol = CreateModel()
         presenter.setCreatModel(createModel: createSaveProtocol)
+        
         descriptionTextViewStylization()
         setupEditScreen()
-        
-        
         hideBarButtomItem()
         nameTaskTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         imageViewAdd.layer.cornerRadius = 10
