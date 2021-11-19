@@ -34,30 +34,12 @@ class CreateTaskViewController: UIViewController {
         presenter.getTask()
         
         descriptionTextViewStylization()
-        setupEditScreen()
+        presenter.setupEditScreen()
         hideBarButtomItem()
         nameTaskTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         imageViewAdd.layer.cornerRadius = 10
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
-    
-    private func setupEditScreen() {
-        
-        if presenter.currentTask != nil{
-            title = "Редактировать задачу"
-            nameTaskTextField.text = presenter.currentTask.name
-            descriptionTextView.text = presenter.currentTask.descriptionTask
-            navigationItem.rightBarButtonItem?.isEnabled = true
-            imageViewAdd.image = UIImage(data: presenter.currentTask.imageDat!)
-            addImageButton.setTitle("Изменить изображение", for: .normal)
-            
-        } else {
-            deleteImageButton.isHidden = true
-        }
-        
-    }
-    
-    
     
     
     @IBAction func addImageButtonPressed(_ sender: UIButton) {
@@ -150,6 +132,7 @@ extension CreateTaskViewController{
         descriptionTextView.text = ""
         descriptionTextView.backgroundColor = .lightGray
         descriptionTextView.layer.cornerRadius = 10
+        deleteImageButton.isHidden = true
     }
 }
 
@@ -181,5 +164,15 @@ extension CreateTaskViewController: CreateViewProtocole {
     
     func loadTask(task: Task){
         self.task = task
+    }
+    
+    func setupEditScreen(title: String, name: String?, description: String?, isEnable: Bool, image: Data, settitle: String, isHidden: Bool){
+        self.title = title
+        nameTaskTextField.text = name
+        descriptionTextView.text = description
+        navigationItem.rightBarButtonItem?.isEnabled = isEnable
+        imageViewAdd.image = UIImage(data: image)
+        addImageButton.setTitle(settitle, for: .normal)
+        deleteImageButton.isHidden = isHidden
     }
 }

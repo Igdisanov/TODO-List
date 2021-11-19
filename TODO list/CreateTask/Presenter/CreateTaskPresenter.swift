@@ -52,4 +52,21 @@ class CreatePresenter {
     }
     
 
+    func setupEditScreen() {
+
+        if currentTask != nil{
+
+            createView.setupEditScreen(title: "Редактировать задачу",
+                                       name: currentTask.name,
+                                       description: currentTask.descriptionTask,
+                                       isEnable: true,
+                                       image: currentTask.imageDat!,
+                                       settitle: "Изменить изображение",
+                                       isHidden: false)
+
+        }
+    }
+    
+    
+    
 }
