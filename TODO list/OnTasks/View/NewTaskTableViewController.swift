@@ -11,12 +11,10 @@ import RealmSwift
 class NewTaskTableViewController: UITableViewController  {
     
     // MARK: Properties
-    
-    
     var task: Results<Task>!
-//    let presenter: NewTaskPresenter!
-    // Date formater
     
+    
+    // Date formater
     var formater: String {
         get {
             let formater = DateFormatter()
